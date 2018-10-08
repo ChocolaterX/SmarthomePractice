@@ -1,0 +1,1 @@
+在当前路径下 java -jar MotionRecognition.jar test_data\xxx

@@ -1,0 +1,6 @@
+调用命令:
+python3 ConvertToPcm.py  ---使用文件voice.txt  输出voice.wav
+python3 ConvertToPcm.py path+filename.txt ---输出path+filename.wav
+
+正确执行exit(1)
+错误执行exit(0)

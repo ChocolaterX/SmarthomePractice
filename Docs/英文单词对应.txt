@@ -1,0 +1,23 @@
+
+模块名称
+security
+
+设备
+curtain		窗帘
+switch		开关
+socket		插座
+doorInduction	门磁感应
+infraredInduction	红外感应
+lock	门锁
+camera	摄像头
+sensor 传感器
+temperature	温度传感器
+humidity	湿度传感器
+
+
+命名 
+handle 处理（设备感知指令上传的处理）
+execute 执行（设备控制命令等）
+alarm  报警（推送）
+
+Parity 奇偶性
