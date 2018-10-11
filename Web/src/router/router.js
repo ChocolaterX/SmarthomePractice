@@ -7,6 +7,7 @@ import login from '../components/Login.vue'
 import main from '../components/Main.vue'
 import device from '../components/Device.vue'
 import scene from '../components/Scene.vue'
+import security from '../components/Security.vue'
 import networking from '../components/Networking.vue'
 
 Vue.use(Router)
@@ -46,6 +47,11 @@ export default new Router({
 			path: '/networking',
 			name: 'networking',
 			component: networking
+		},
+		{
+			path: '/security',
+			name:'security',
+			component: security
 		}
 	]
 })

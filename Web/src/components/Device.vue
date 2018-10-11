@@ -12,8 +12,8 @@
 					<td>设备类型</td>
 					<td>控制命令</td>
 				</tr>
-				<tr v-for="device in devices">
-					<td>{{$index}}</td>
+				<tr v-for="(device,index) in devices">
+					<td>{{index+1}}</td>
 					<td>{{device.name}}</td>
 					<td>{{device.mac}}</td>
 					<td>{{device.type}}</td>
@@ -33,7 +33,6 @@
 
 		</div>
 	</div>
-
 </template>
 
 <script>
