@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0be90ad4-0d47-4472-bffd-7b2ef16d0876" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Back_end/routes/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/.idea/server.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/routes/users.js" beforeDir="false" />
-    </list>
+    <list default="true" id="0be90ad4-0d47-4472-bffd-7b2ef16d0876" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -63,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Back_end/routes/user.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="248">
-              <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+              <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -90,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Back_end/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
-              <caret line="41" column="15" lean-forward="true" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+            <state relative-caret-position="465">
+              <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -2100,12 +2089,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1539758275953</updated>
-      <workItem from="1539758277440" duration="3707000" />
+      <workItem from="1539758277440" duration="4240000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3707000" />
+    <option name="totallyTimeSpent" value="4240000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -2149,13 +2138,6 @@
     <entry file="file://$PROJECT_DIR$/Back_end/test/sceneTest.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="41" column="15" lean-forward="true" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Back_end/routes/device.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
@@ -2170,6 +2152,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/routes/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Back_end/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -2177,10 +2166,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/routes/user.js">
+    <entry file="file://$PROJECT_DIR$/Back_end/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        <state relative-caret-position="465">
+          <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
         </state>
       </provider>
     </entry>
