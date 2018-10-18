@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0be90ad4-0d47-4472-bffd-7b2ef16d0876" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/routes/device.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/routes/device.js" afterDir="false" />
-    </list>
+    <list default="true" id="0be90ad4-0d47-4472-bffd-7b2ef16d0876" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -68,7 +63,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Back_end/routes/device.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="217">
@@ -86,7 +81,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/securityDevice.js">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -2132,12 +2127,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1539758275953</updated>
-      <workItem from="1539758277440" duration="7205000" />
+      <workItem from="1539758277440" duration="8893000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7205000" />
+    <option name="totallyTimeSpent" value="8893000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -2181,13 +2176,6 @@
     <entry file="file://$PROJECT_DIR$/Back_end/test/sceneTest.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/routes/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Back_end/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -2226,18 +2214,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/securityDevice.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Cloud/server/service/smartpen/smartpen.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-575" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/controlDevice.js">
+    <entry file="file://$PROJECT_DIR$/Back_end/routes/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="34" column="2" lean-forward="true" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+        <state relative-caret-position="248">
+          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -2247,6 +2232,16 @@
           <caret line="7" column="43" lean-forward="true" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/controlDevice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="34" column="2" lean-forward="true" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/securityDevice.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
