@@ -36,6 +36,9 @@
 </template>
 
 <script>
+	import Axios from 'axios'
+
+	//	let axios = require('axios');
 	let deviceCommand = '';
 	let showTips = false;
 	let devices = [{
@@ -50,7 +53,7 @@
 		"name": "插座",
 		"mac": "123456123",
 		"type": 3
-	}]
+	}];
 	export default {
 		data() {
 			return {
@@ -62,6 +65,24 @@
 		methods: {
 			pushCommand(deviceCommand) {
 				console.log(deviceCommand);
+				//				axios.defaults.baseURL = 'https://api.example.com';
+				//				axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+				//				axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+				Axios({
+					method: 'get',
+					url: 'http://localhost:3000/device/control/add',
+				}).then((response) => {
+					console.log(response);
+				})
+
+				//				axios.post('http://localhost:3000/device/control/add').then(function(res) {
+				//					// /device/list/get
+				//					console.log('control add res');
+				//					console.log(res);
+				//				}).catch(function(error) {
+				//					console.log('error:' + error);
+				//				});
 			},
 			changeShowTips() {
 				console.log('change show tips');

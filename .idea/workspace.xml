@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0be90ad4-0d47-4472-bffd-7b2ef16d0876" name="Default Changelist" comment="" />
+    <list default="true" id="0be90ad4-0d47-4472-bffd-7b2ef16d0876" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back_end/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back_end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back_end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back_end/routes/device.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/routes/device.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Web/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Web/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/components/Device.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/components/Device.vue" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -23,22 +32,33 @@
         <counts>
           <entry key="js" value="10" />
           <entry key="json" value="1" />
+          <entry key="ts" value="1" />
+          <entry key="vue" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JSON" value="1" />
           <entry key="JavaScript" value="10" />
+          <entry key="TypeScript" value="1" />
+          <entry key="Vue.js" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="546" />
+          <entry key="js" value="608" />
+          <entry key="vue" value="218" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="546" />
+          <entry key="JavaScript" value="608" />
+          <entry key="Vue.js" value="218" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="TypeScriptServerServiceImpl" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -57,8 +77,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Back_end/routes/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+            <state relative-caret-position="341">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -66,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Back_end/routes/device.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="7" column="43" lean-forward="true" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+            <state relative-caret-position="310">
+              <caret line="10" column="10" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -75,22 +95,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/controlDevice.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="637">
-              <caret line="34" column="2" lean-forward="true" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+            <state relative-caret-position="1009">
+              <caret line="34" column="2" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/securityDevice.js">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Back_end/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="341">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
@@ -124,13 +139,14 @@
         <option value="$PROJECT_DIR$/Back_end/test/sceneTest.js" />
         <option value="$PROJECT_DIR$/Back_end/routes/index.js" />
         <option value="$PROJECT_DIR$/Back_end/routes/users.js" />
-        <option value="$PROJECT_DIR$/Back_end/app.js" />
         <option value="$PROJECT_DIR$/Back_end/routes/scene.js" />
         <option value="$PROJECT_DIR$/Back_end/routes/user.js" />
         <option value="$PROJECT_DIR$/Back_end/server/service/device/securityDevice.js" />
         <option value="$PROJECT_DIR$/Back_end/server/service/device/command.js" />
         <option value="$PROJECT_DIR$/Back_end/server/service/device/controlDevice.js" />
+        <option value="$PROJECT_DIR$/Web/src/components/Device.vue" />
         <option value="$PROJECT_DIR$/Back_end/routes/device.js" />
+        <option value="$PROJECT_DIR$/Back_end/app.js" />
       </list>
     </option>
   </component>
@@ -2057,40 +2073,6 @@
               <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
               <item name="Back_end" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
-              <item name="Cloud" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
-              <item name="Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
-              <item name="Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
-              <item name="Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="device" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
-              <item name="Cloud" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="smartpen" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -2100,10 +2082,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/workspaces/Education_Platform" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
+    <property name="ts.external.directory.path" value="D:\Program Files\WebStorm 2018.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -2127,12 +2110,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1539758275953</updated>
-      <workItem from="1539758277440" duration="8893000" />
+      <workItem from="1539758277440" duration="13231000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8893000" />
+    <option name="totallyTimeSpent" value="13231000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -2141,9 +2124,10 @@
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32899022" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32899022" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -2186,13 +2170,6 @@
     <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/command.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Cloud/server/service/device/device.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -2219,29 +2196,51 @@
         <state relative-caret-position="-575" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/routes/user.js">
+    <entry file="file://$PROJECT_DIR$/Web/node_modules/axios/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-        </state>
+        <state relative-caret-position="-3393" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/routes/device.js">
+    <entry file="file://$PROJECT_DIR$/Web/src/components/Device.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="7" column="43" lean-forward="true" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/controlDevice.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="34" column="2" lean-forward="true" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+        <state relative-caret-position="730">
+          <caret line="71" column="40" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/securityDevice.js">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/routes/device.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="10" column="10" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/controlDevice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1009">
+          <caret line="34" column="2" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/routes/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

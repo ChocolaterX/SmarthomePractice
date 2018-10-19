@@ -9,9 +9,11 @@ router.get('/', function (ctx, next) {
 });
 
 router.get('/control/add', async function (ctx, next) {
-    controlDevice.addDevice('data', (message) => {
-        ctx.body = message;
-    });
+    console.log('inside /control/add');
+    ctx.body = 'this is a control device add response';
+    // await controlDevice.addDevice('data', (message) => {
+    //     ctx.body = message;
+    // });
     // ctx.body = 'this is a control device add response';
 });
 
