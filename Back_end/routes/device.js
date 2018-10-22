@@ -8,12 +8,16 @@ router.get('/', function (ctx, next) {
     ctx.body = 'this is a device response!'
 });
 
-router.get('/control/add', async function (ctx, next) {
-    console.log('inside /control/add');
-    ctx.body = 'this is a control device add response';
-    // await controlDevice.addDevice('data', (message) => {
-    //     ctx.body = message;
-    // });
+router.post('/control/add', async function (ctx, next) {
+    // console.log('inside /control/add');
+    // ctx.body = 'this is a control device add response';
+    console.log('post数据');
+    let {name, number} = ctx.request.body;          //解构
+    // console.log(ctx.request.body.name);
+    // console.log(ctx.request.body.number);
+    await controlDevice.addDevice('data', (message) => {
+        ctx.body = message;
+    });
     // ctx.body = 'this is a control device add response';
 });
 

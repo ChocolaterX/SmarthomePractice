@@ -70,8 +70,12 @@
 				//				axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 				Axios({
-					method: 'get',
+					method: 'post',
 					url: 'http://localhost:3000/device/control/add',
+					data: {
+						name: '123',
+						number: 45
+					}
 				}).then((response) => {
 					console.log(response);
 				})
