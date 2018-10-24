@@ -1,18 +1,3 @@
-/**
- * <copyright file="controlDevice.js" company="Run">
- * Copyright (c) 2018 All Right Reserved, http: //www.greenorbs.com/
- *  This source is subject to the Run Permissive License.
- *  Please see the License.txt file for more information.
- *  All other rights reserved.
- * </copyright>
- * <author>Suyang Jiang</author>
- * <email>jiangsuyang1111@163.com</email>
- * <date>10/17/2018</date>
- * <summary>
- *  。
- * </summary>
- */
-
 // var mongoose = require('../../cloud_db_connect');
 // var config = require('../../../config/config');
 // var Device = mongoose.model('Device');

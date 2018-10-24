@@ -14,7 +14,6 @@ const device = require('./routes/device');
 const scene = require('./routes/scene');
 
 //require server files
-// const service = require('./server/service');
 const model = require('./server/model');
 
 // error handler
@@ -43,9 +42,9 @@ app.use(async (ctx, next) => {
 
 // routes
 app.use(index.routes(), index.allowedMethods());
-// app.use(user.routes(), user.allowedMethods());
-// app.use(device.routes(), device.allowedMethods());
-// app.use(scene.routes(), scene.allowedMethods());
+app.use(user.routes(), user.allowedMethods());
+app.use(device.routes(), device.allowedMethods());
+app.use(scene.routes(), scene.allowedMethods());
 
 // error-handling
 app.on('error', (err, ctx) => {

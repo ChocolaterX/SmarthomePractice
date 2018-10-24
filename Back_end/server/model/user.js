@@ -156,6 +156,6 @@ var UserSchema = new Schema({
 // UserSchema.index({phone: 1});
 // UserSchema.index({email: 1});
 // UserSchema.index({email: 1, removed: -1, updatedTime: -1});
-mongoose.model('User', UserSchema);
+// mongoose.model('User', UserSchema);
 
 module.exports = mongoose.model('User',UserSchema);

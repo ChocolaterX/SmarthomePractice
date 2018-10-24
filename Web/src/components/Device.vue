@@ -78,7 +78,9 @@
 					}
 				}).then((response) => {
 					console.log(response);
-				})
+				}).catch(function(error){
+					
+				});
 
 				//				axios.post('http://localhost:3000/device/control/add').then(function(res) {
 				//					// /device/list/get
