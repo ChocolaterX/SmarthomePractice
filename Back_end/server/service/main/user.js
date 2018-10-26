@@ -1,17 +1,24 @@
+import async from 'async'
+
 var userModel = require('../../model/user');
+
 
 
 // exports.login = async (ctx, callback) => {
 exports.login = async (ctx) => {
-    let {username} = ctx.request.body;
+    let {username, password} = ctx.request.body;
     let response = {};
     let userEntity = {
-        username
+        username,
+        password
     };
 
-    //逻辑不够，稍后补充
+
     return new Promise((resolve, reject) => {
-        userModel.findOne(userEntity, function (err, result) {
+
+
+
+        /*userModel.findOne(userEntity, function (err, result) {
             if (err) {
                 console.log('数据库查询用户异常');
                 reject(err);
@@ -26,50 +33,16 @@ exports.login = async (ctx) => {
                 resolve(response);
             }
             else {
-                console.log('未找到该用户');
+                console.log('用户名或密码错误');
                 response = {
                     errorCode: 600,
-                    message: '未找到该用户'
+                    message: '用户名或密码错误'
                 };
                 resolve(response);
             }
-        });
+        });*/
     });
 
-    //逻辑不够，稍后补充
-    /*userModel.findOne(userEntity, function (err, result) {
-        if (err) {
-            console.log('数据库查询用户异常');
-            response = {
-                errorCode: 600,
-                message: '查找用户异常'
-            }
-        }
-        else if (result) {
-            console.log('数据库查询用户成功');
-            response = {
-                errorCode: 0,
-                message: '登录成功'
-            }
-        }
-        else {
-            console.log('未找到该用户');
-            response = {
-                errorCode: 600,
-                message: '未找到该用户'
-            }
-        }
-
-        return new Promise((resolve, reject) => {
-            console.log(response);
-            if (response.errorCode === 0) {
-                resolve(response);
-            }
-            else {
-                reject();
-            }
-        });
-    });*/
 };
 
 function insert() {

@@ -7,6 +7,7 @@ var UserSchema = new Schema({
     username: String,                //注册、登陆使用账号
     password: String,
     userNumber: Number,
+    realname: String,
     // email: String,             //邮箱
     // salt: String,              //盐
     // hashed_password: String,   //加密后密码
@@ -158,4 +159,4 @@ var UserSchema = new Schema({
 // UserSchema.index({email: 1, removed: -1, updatedTime: -1});
 // mongoose.model('User', UserSchema);
 
-module.exports = mongoose.model('User',UserSchema);
+module.exports = mongoose.model('User', UserSchema);

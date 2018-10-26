@@ -71,15 +71,15 @@
 
 				Axios({
 					method: 'post',
-					url: 'http://localhost:3000/device/control/add',
+					url: BASEPATH+'/device/control/add',
 					data: {
 						name: '123',
 						number: 45
 					}
 				}).then((response) => {
 					console.log(response);
-				}).catch(function(error){
-					
+				}).catch(function(error) {
+
 				});
 
 				//				axios.post('http://localhost:3000/device/control/add').then(function(res) {

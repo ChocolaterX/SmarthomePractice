@@ -8,11 +8,14 @@ router.get('/', async function (ctx, next) {
 });
 
 router.post('/login', async function (ctx, next) {
-    console.log('/user/login');
+    console.log('router: /user/login');
     await userService.login(ctx).then(function (response) {
+        // console.log('resolve response:');
+        // console.log(response);
         ctx.body = response;
-    }, function (response) {
-        ctx.body = response;
+    }, function (err) {
+        console.log('reject');
+        ctx.body = err;
     });
 });
 

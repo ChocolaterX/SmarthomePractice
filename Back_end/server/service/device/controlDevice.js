@@ -13,7 +13,7 @@ var fs = require('fs');
 // var CommandModule = require('./command.js');      //command自定义模块
 
 //添加设备
-exports.addDevice =  (data,callback) =>{
+exports.addDevice = (data, callback) => {
     console.log('add device');
     callback('add device success');
     // return 'add device success';
