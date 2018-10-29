@@ -4,22 +4,22 @@
 			<span>
 				欢迎，{{$store.state.username}}
             </span>
+      <div>
+        <button v-on:click="logout()">退出登录</button>
+      </div>
     </div>
     <br>
 
-    <div>
+    <div v-if="!($store.state.islogin=='1')">
       <div>
         <input v-model="username" type="text" placeholder="请输入账号" name="username">
       </div>
-    </div>
-    <div>
       <div>
         <input v-model="password" type="password" placeholder="请输入密码" name="password">
       </div>
-    </div>
-
-    <div>
-      <button v-on:click="login(username, password)">登录</button>
+      <div>
+        <button v-on:click="login(username, password)">登录</button>
+      </div>
     </div>
 
   </div>
@@ -36,7 +36,7 @@
         password,
         dialogVisible: false,
 //	      user_name:sessionStorage.getItem("username"),
-        user_name: localStorage.getItem("username") ? localStorage.getItem("username") : sessionStorage.getItem("username"),
+        username: localStorage.getItem("username") ? localStorage.getItem("username") : sessionStorage.getItem("username"),
         // user_password: localStorage.getItem("userpass"),
         // login_msg: '',
 //	      islogin:sessionStorage.getItem("islogin"),
@@ -110,6 +110,9 @@
             })
           }));
         }
+      },
+      logout() {
+
       }
     },
     mounted: function () {

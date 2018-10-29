@@ -1,24 +1,28 @@
-import async from 'async'
-
+const asyncModule = require('async');
+const validator = require('validator');
 var userModel = require('../../model/user');
 
-
-
-// exports.login = async (ctx, callback) => {
+//用户登录
 exports.login = async (ctx) => {
     let {username, password} = ctx.request.body;
     let response = {};
+    username = validator.trim(username);
+    password = validator.trim(password);
     let userEntity = {
         username,
         password
     };
 
-
     return new Promise((resolve, reject) => {
+        //参数验证
+        if (username == '' || password == '') {
+            response = {
+                errorCode: 600,
+                message: '用户名/密码格式有误'
+            };
+        }
 
-
-
-        /*userModel.findOne(userEntity, function (err, result) {
+        userModel.findOne(userEntity, function (err, result) {
             if (err) {
                 console.log('数据库查询用户异常');
                 reject(err);
@@ -40,9 +44,15 @@ exports.login = async (ctx) => {
                 };
                 resolve(response);
             }
-        });*/
+        });
     });
 
+};
+
+exports.logout = async (ctx) => {
+    return new Promise((resolve, reject) => {
+
+    });
 };
 
 function insert() {

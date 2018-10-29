@@ -1,24 +1,48 @@
 const router = require('koa-router')();
-const controlDevice = require('../server/service/device/controlDevice');
-// const securityDevice = require('../server/service/device/securityDevice');
+const controlDeviceService = require('../server/service/device/controlDevice');
+const securityDeviceService = require('../server/service/device/securityDevice');
 
 router.prefix('/device');
 
-router.get('/', function (ctx, next) {
+router.get('/', (ctx, next) => {
     ctx.body = 'this is a device response!'
 });
 
-router.post('/control/add', async function (ctx, next) {
-    // console.log('inside /control/add');
-    // ctx.body = 'this is a control device add response';
-    console.log('/control/add');
-    // let {name, number} = ctx.request.body;          //解构
-    // console.log(ctx.request.body.name);
-    // console.log(ctx.request.body.number);
-    await controlDevice.addDevice('data', (message) => {
-        ctx.body = message;
+router.post('/control/create', async (ctx, next) => {
+    await controlDeviceService.create(ctx).then(response => {
+    }, err => {
     });
-    // ctx.body = 'this is a control device add response';
+});
+
+router.get('/control/list/retrive', async (ctx, next) => {
+    await controlDeviceService.retrievalList(ctx).then(response => {
+    }, err => {
+    });
+});
+
+router.post('/control/update', async (ctx, next) => {
+    await controlDeviceService.update(ctx).then(response => {
+    }, err => {
+    });
+});
+
+router.post('/control/delete', async (ctx, next) => {
+    await controlDeviceService.delete(ctx).then(response => {
+    }, err => {
+
+    });
+});
+
+router.post('/control/command', async (ctx, next) => {
+    await controlDeviceService.command(ctx).then(response => {
+    }, err => {
+    });
+});
+
+router.post('/control/instruction', async (ctx, next) => {
+    await controlDeviceService.command(ctx).then(response => {
+    }, err => {
+    });
 });
 
 module.exports = router;
