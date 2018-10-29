@@ -1,7 +1,7 @@
 const asyncModule = require('async');
 const validator = require('validator');
 var userModel = require('../../model/user');
-var deviceModel = require('../../model/device');
+var deviceModel = require('../../model/controlDevice');
 var sceneModel = require('../../model/scene');
 
 //添加设备

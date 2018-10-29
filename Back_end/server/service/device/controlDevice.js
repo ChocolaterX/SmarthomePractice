@@ -1,7 +1,7 @@
 const asyncModule = require('async');
 const validator = require('validator');
 var userModel = require('../../model/user');
-var deviceModel = require('../../model/device');
+var controlDeviceModel = require('../../model/controlDevice');
 
 //添加设备
 exports.create = async (ctx) => {

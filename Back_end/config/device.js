@@ -1,19 +1,24 @@
 let deviceList = [
     {
         userId: '',
-        devices: ['', '', '', '', '']
+        controlDevices: ['', '', '', '', ''],
+        securityDevices: ['', '', '', '']
     }, {
         userId: '',
-        devices: ['', '', '', '', '']
+        controlDevices: ['', '', '', '', ''],
+        securityDevices: ['', '', '', '']
     }, {
         userId: '',
-        devices: ['', '', '', '', '']
+        controlDevices: ['', '', '', '', ''],
+        securityDevices: ['', '', '', '']
     }, {
         userId: '',
-        devices: ['', '', '', '', '']
+        controlDevices: ['', '', '', '', ''],
+        securityDevices: ['', '', '', '']
     }, {
         userId: '',
-        devices: ['', '', '', '', '']
+        controlDevices: ['', '', '', '', ''],
+        securityDevices: ['', '', '', '']
     }
 ];
 

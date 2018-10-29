@@ -42,9 +42,9 @@ app.use(async (ctx, next) => {
 
 // routes
 app.use(index.routes(), index.allowedMethods());
-app.use(user.routes(), user.allowedMethods());
-app.use(device.routes(), device.allowedMethods());
-app.use(scene.routes(), scene.allowedMethods());
+// app.use(user.routes(), user.allowedMethods());
+// app.use(device.routes(), device.allowedMethods());
+// app.use(scene.routes(), scene.allowedMethods());
 
 // error-handling
 app.on('error', (err, ctx) => {
