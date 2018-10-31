@@ -32,9 +32,9 @@
 		</div>
 
 		<!-- device list -->
-		<div v-show="onAddingScene">
+		<!--<div v-show="onAddingScene">-->
 
-		</div>
+		<!--</div>-->
 	</div>
 </template>
 

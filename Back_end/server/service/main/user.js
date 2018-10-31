@@ -1,9 +1,9 @@
 const asyncModule = require('async');
 const validator = require('validator');
-var userModel = require('../../model/user');
+const userModel = require('../../model/user');
 
 //用户登录
-exports.login = async (ctx) => {
+exports.login = async ctx => {
     let {username, password} = ctx.request.body;
     let response = {};
     username = validator.trim(username);
@@ -15,11 +15,12 @@ exports.login = async (ctx) => {
 
     return new Promise((resolve, reject) => {
         //参数验证
-        if (username == '' || password == '') {
+        if (username === '' || password === '') {
             response = {
                 errorCode: 600,
                 message: '用户名/密码格式有误'
             };
+            reject(response);
         }
 
         userModel.findOne(userEntity, function (err, result) {
@@ -49,11 +50,47 @@ exports.login = async (ctx) => {
 
 };
 
-exports.logout = async (ctx) => {
+//注销token和session
+exports.logout = async ctx => {
+    let response = {};
     return new Promise((resolve, reject) => {
-
+        response = {
+            errorCode: 0,
+            message: '注销成功'
+        };
+        resolve(response);
     });
 };
+
+exports.info = async ctx => {
+    let response = {};
+    let userId = ctx.request.header.userid;         //header中不区分大小写
+    let userEntity = {_id: userId};
+    return new Promise((resolve, reject) => {
+        userModel.findOne(userEntity, (err, result) => {
+            if (err) {
+                console.log('数据库查询用户异常');
+                reject(err);
+            }
+            else if (result) {
+                response = {
+                    errorCode: 0,
+                    message: '查询个人信息成功',
+                    user: result
+                };
+                resolve(response);
+            }
+            else {
+                response = {
+                    errorCode: 600,
+                    message: '未找到当前用户'
+                };
+                resolve(response);
+            }
+        });
+    });
+};
+
 
 function insert() {
     let userEntity = new userModel({

@@ -22,6 +22,11 @@
       </div>
     </div>
 
+    <!--for test-->
+    <div>
+      <button v-on:click="info()">查看个人信息</button>
+    </div>
+
   </div>
 </template>
 
@@ -67,8 +72,8 @@
             type: 'error'
           });
         } else {
-          console.log('username:  ' + username);
-          console.log('password:  ' + password);
+          // console.log('username:  ' + username);
+          // console.log('password:  ' + password);
           this.$axios({
             method: 'post',
             url: BASEPATH + '/user/login',
@@ -78,16 +83,16 @@
             }
           }).then(response => {
             console.log(response);
-            if (response.data.errorCode == 0) {
+            if (response.data.errorCode === 0) {
               obj.username = username;
               obj.realname = response.data.user.realname;
-              obj.userid = response.data.user._id;
+              obj.userId = response.data.user._id;
               obj.$store.dispatch('saverealname', obj.realname);
-              obj.$store.dispatch('saveid', obj.userid);
+              obj.$store.dispatch('saveid', obj.userId);
               obj.$store.dispatch('userlogin', obj.username);
 
               sessionStorage.setItem("realname", obj.realname);
-              sessionStorage.setItem("userid", obj.userid);
+              sessionStorage.setItem("userid", obj.userId);
               sessionStorage.setItem('changeshow', 1);
               //登录成功 将session的值改变
               sessionStorage.setItem("islogin", '1');
@@ -102,16 +107,74 @@
                 type: 'error'
               });
             }
-          }, (error => {
+          }).catch(error => {
             console.log(error);
             this.$message({
               message: '登录失败，服务器异常',
               type: 'error'
             })
-          }));
+          });
         }
       },
+
       logout() {
+        let vm = this;
+        let userId = sessionStorage.getItem('userId');
+        vm.$confirm('确认注销账户？', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          vm.$axios.get(BASEPATH + '/user/logout', {
+            headers: {'userid': userId}
+          }).then(function (response) {
+//            console.log(res);
+            if (response.data.errorCode === 0) {
+              vm.$message({
+                message: '注销成功',
+                type: 'success'
+              });
+              vm.islogin = 0;
+              sessionStorage.clear();
+              // localStorage.clear();
+              vm.$store.dispatch('userexit');
+              // setTimeout(function () {
+              //   vm.$router.push({path: '/'})
+              // }, 1000)
+            }
+          })
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消注销'
+          });
+        });
+      },
+
+      info() {
+        let userId = sessionStorage.getItem('userid');
+        let user = {};
+        console.log(userId);
+        this.$axios.get(BASEPATH + '/user/info', {
+          headers: {'userid': userId}
+        }).then(response => {
+          console.log(response);
+          if (response.data.errorCode === 0) {
+            user = response.data.user;
+          }
+          else {
+            this.$message({
+              message: response.data.message,
+              type: 'error'
+            });
+          }
+        }).catch(error => {
+          console.log(error);
+          this.$message({
+            type: 'error',
+            message: '查询个人信息失败，服务器异常'
+          });
+        });
 
       }
     },

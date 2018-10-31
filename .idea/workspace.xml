@@ -2,13 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0be90ad4-0d47-4472-bffd-7b2ef16d0876" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Back_end/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/config/device.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/config/device.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/server/model/device.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/server/model/controlDevice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back_end/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back_end/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back_end/routes/device.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/routes/device.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back_end/routes/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/routes/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back_end/server/model/controlDevice.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/server/model/controlDevice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Back_end/server/service/device/controlDevice.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/server/service/device/controlDevice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Back_end/server/service/scene/scene.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/server/service/scene/scene.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back_end/server/service/device/securityDevice.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/server/service/device/securityDevice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Back_end/server/service/main/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/Back_end/server/service/main/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/components/Device.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/components/Device.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/components/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/components/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/components/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/components/Scene.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/components/Scene.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web/src/router/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/Web/src/router/router.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,31 +42,31 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="cloud" value="1" />
-          <entry key="js" value="75" />
+          <entry key="js" value="92" />
           <entry key="json" value="1" />
           <entry key="ts" value="1" />
-          <entry key="vue" value="5" />
+          <entry key="vue" value="14" />
           <entry key="www" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="78" />
+          <entry key="JavaScript" value="95" />
           <entry key="TypeScript" value="1" />
-          <entry key="Vue.js" value="5" />
+          <entry key="Vue.js" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="6043" />
-          <entry key="vue" value="421" />
+          <entry key="js" value="10592" />
+          <entry key="vue" value="2730" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="6043" />
-          <entry key="Vue.js" value="421" />
+          <entry key="JavaScript" value="10592" />
+          <entry key="Vue.js" value="2730" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -71,37 +79,69 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Web/src/store/index.js">
+        <entry file="file://$PROJECT_DIR$/Web/src/App.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="868">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="372">
+              <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+              <folding>
+                <element signature="n#style#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Back_end/app.js">
+        <entry file="file://$PROJECT_DIR$/Web/src/components/Login.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="44" selection-start-line="44" selection-start-column="3" selection-end-line="46" selection-end-column="51" />
+            <state relative-caret-position="403">
+              <caret line="160" column="32" lean-forward="true" selection-start-line="160" selection-start-column="32" selection-end-line="160" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Back_end/routes/user.js">
+        <entry file="file://$PROJECT_DIR$/Web/src/components/Device.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="186">
+              <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+              <folding>
+                <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="e#1562#2264#0" />
+                <element signature="e#1178#1953#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web/src/components/Header.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="806">
+              <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Web/src/router/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Back_end/routes/index.js">
+        <entry file="file://$PROJECT_DIR$/Web/src/router/router.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="930">
+              <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+                <element signature="e#200#243#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,8 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Back_end/routes/device.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+            <state relative-caret-position="465">
+              <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -118,29 +158,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/controlDevice.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Back_end/routes/scene.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Back_end/server/service/main/user.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="42" column="39" lean-forward="true" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
-              <folding>
-                <element signature="n#!!block;n#insert#0" />
-              </folding>
+            <state relative-caret-position="1722">
+              <caret line="129" column="21" lean-forward="true" selection-start-line="129" selection-start-column="21" selection-end-line="129" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -159,11 +178,14 @@
       <find>device</find>
       <find>control/</find>
       <find>controlDevice</find>
+      <find>(ctx)</find>
+      <find>userid</find>
     </findStrings>
     <replaceStrings>
       <replace>scene</replace>
       <replace>sceneService</replace>
       <replace>controlDeviceService</replace>
+      <replace>ctx</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -177,9 +199,7 @@
         <option value="$PROJECT_DIR$/Back_end/test/securityDeviceTest.js" />
         <option value="$PROJECT_DIR$/Back_end/test/sceneTest.js" />
         <option value="$PROJECT_DIR$/Back_end/routes/users.js" />
-        <option value="$PROJECT_DIR$/Back_end/server/service/device/securityDevice.js" />
         <option value="$PROJECT_DIR$/Back_end/server/service/device/command.js" />
-        <option value="$PROJECT_DIR$/Web/src/components/Device.vue" />
         <option value="$PROJECT_DIR$/Back_end/config/env/development.js" />
         <option value="$PROJECT_DIR$/Back_end/config/env/production.js" />
         <option value="$PROJECT_DIR$/Back_end/config/config.js" />
@@ -189,19 +209,30 @@
         <option value="$PROJECT_DIR$/Back_end/server/service.js" />
         <option value="$PROJECT_DIR$/Back_end/server/model/user.js" />
         <option value="$PROJECT_DIR$/Web/src/store/index.js" />
-        <option value="$PROJECT_DIR$/Web/src/components/Login.vue" />
-        <option value="$PROJECT_DIR$/Back_end/routes/user.js" />
-        <option value="$PROJECT_DIR$/Back_end/routes/device.js" />
         <option value="$PROJECT_DIR$/Back_end/server/service/scene/scene.js" />
         <option value="$PROJECT_DIR$/Back_end/routes/scene.js" />
         <option value="$PROJECT_DIR$/Back_end/server/model/device.js" />
         <option value="$PROJECT_DIR$/Back_end/server/model/scene.js" />
-        <option value="$PROJECT_DIR$/Back_end/server/service/main/user.js" />
-        <option value="$PROJECT_DIR$/Back_end/server/service/device/controlDevice.js" />
         <option value="$PROJECT_DIR$/Back_end/server/model/securityDevice.js" />
         <option value="$PROJECT_DIR$/Back_end/config/device.js" />
-        <option value="$PROJECT_DIR$/Back_end/app.js" />
         <option value="$PROJECT_DIR$/Back_end/routes/index.js" />
+        <option value="$PROJECT_DIR$/Back_end/server/service/device/securityDevice.js" />
+        <option value="$PROJECT_DIR$/Web/src/components/Header.vue" />
+        <option value="$PROJECT_DIR$/Cloud/server/service/main/user.js" />
+        <option value="$PROJECT_DIR$/Back_end/app.js" />
+        <option value="$PROJECT_DIR$/Back_end/routes/user.js" />
+        <option value="$PROJECT_DIR$/Back_end/server/service/main/user.js" />
+        <option value="$PROJECT_DIR$/Back_end/server/service/device/deviceAdmin.js" />
+        <option value="$PROJECT_DIR$/Back_end/server/model/controlDevice.js" />
+        <option value="$PROJECT_DIR$/Web/src/components/Scene.vue" />
+        <option value="$PROJECT_DIR$/Back_end/routes/device.js" />
+        <option value="$PROJECT_DIR$/Back_end/server/service/device/controlDevice.js" />
+        <option value="$PROJECT_DIR$/Back_end/gateway/gateway.js" />
+        <option value="$PROJECT_DIR$/Back_end/gateway/validate.js" />
+        <option value="$PROJECT_DIR$/Web/src/components/Login.vue" />
+        <option value="$PROJECT_DIR$/Web/src/components/Device.vue" />
+        <option value="$PROJECT_DIR$/Web/src/App.vue" />
+        <option value="$PROJECT_DIR$/Web/src/router/router.js" />
       </list>
     </option>
   </component>
@@ -274,63 +305,7 @@
               <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
               <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
               <item name="Back_end" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
-              <item name="Back_end" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
-              <item name="Back_end" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
-              <item name="Back_end" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
-              <item name="Back_end" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
-              <item name="Back_end" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
-              <item name="Back_end" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="device" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
-              <item name="Back_end" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
-              <item name="Back_end" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="scene" type="462c0819:PsiDirectoryNode" />
+              <item name="gateway" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
@@ -355,6 +330,13 @@
               <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
               <item name="Web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SmarthomePractice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SmarthomePractice" type="462c0819:PsiDirectoryNode" />
+              <item name="Web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="store" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -365,7 +347,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/workspaces/Education_Platform" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
@@ -383,12 +365,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Node.js.deviceAdmin.js">
+    <configuration name="deviceAdmin.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="deviceAdmin.js" working-dir="$PROJECT_DIR$/Back_end/server/service/device">
+      <method v="2" />
+    </configuration>
     <configuration name="user.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="user.js" working-dir="$PROJECT_DIR$/Back_end/server/service/main">
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Node.js.user.js" />
+      <item itemvalue="Node.js.deviceAdmin.js" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.deviceAdmin.js" />
         <item itemvalue="Node.js.user.js" />
       </list>
     </recent_temporary>
@@ -406,12 +396,12 @@
       <workItem from="1539758277440" duration="15797000" />
       <workItem from="1540170666129" duration="11601000" />
       <workItem from="1540259794880" duration="27770000" />
-      <workItem from="1540777085461" duration="2679000" />
+      <workItem from="1540777085461" duration="37988000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57847000" />
+    <option name="totallyTimeSpent" value="93156000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -436,6 +426,26 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32899022" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TypeScript" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49947312" weight="0.21281216" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50052685" side_tool="true" weight="0.32899022" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -444,62 +454,11 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Back_end/test/userTest.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/test/controlDeviceTest.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/test/securityDeviceTest.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/test/sceneTest.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Cloud/server/service/device/device.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="567" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Cloud/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1240">
-          <caret line="40" column="25" lean-forward="true" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Cloud/server/service/smartpen/smartpen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-575" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web/node_modules/axios/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3393" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web/src/components/Device.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="730">
-          <caret line="71" column="40" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/securityDevice.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Back_end/node_modules/koa-onerror/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
           <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Cloud/config/rolecontrol.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1581" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Cloud/config/env/production.js">
@@ -595,18 +554,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/server/model/user.js">
+    <entry file="file://$PROJECT_DIR$/Web/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-186">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web/src/main.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web/src/components/Header.vue">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Back_end/config/env/development.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -615,23 +570,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/command.js" />
-    <entry file="file://$PROJECT_DIR$/Web/src/App.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web/src/components/Login.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3503">
-          <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Web/src/store/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="868">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Back_end/server/service/scene/scene.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1023">
@@ -641,33 +579,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Back_end/server/model/scene.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/server/model/controlDevice.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/server/service/main/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="42" column="39" lean-forward="true" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
-          <folding>
-            <element signature="n#!!block;n#insert#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/routes/scene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/routes/device.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Back_end/config/device.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -679,31 +590,186 @@
     <entry file="file://$PROJECT_DIR$/Back_end/server/model/securityDevice.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/controlDevice.js">
+    <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/securityDevice.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        <state relative-caret-position="372">
+          <caret line="12" column="40" lean-forward="true" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="44" selection-start-line="44" selection-start-column="3" selection-end-line="46" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Back_end/routes/user.js">
+    <entry file="file://$PROJECT_DIR$/Back_end/routes/scene.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="589">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Back_end/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Cloud/config/rolecontrol.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Cloud/server/service/main/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2097">
+          <caret line="188" column="13" lean-forward="true" selection-start-line="188" selection-start-column="13" selection-end-line="188" selection-end-column="13" />
+          <folding>
+            <element signature="e#824#3610#0" />
+            <element signature="e#5348#7265#0" />
+            <element signature="e#7312#7957#0" />
+            <element signature="e#8008#9158#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Cloud/server/model/device/device.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/deviceAdmin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/server/model/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="161" selection-start-line="161" selection-end-line="161" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/server/service/main/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-69">
+          <caret line="94" column="18" lean-forward="true" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/server/model/controlDevice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/src/store/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="36" column="6" lean-forward="true" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/routes/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/server/service/device/controlDevice.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1722">
+          <caret line="129" column="21" lean-forward="true" selection-start-line="129" selection-start-column="21" selection-end-line="129" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/src/components/Scene.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="961">
+          <caret line="34" column="4" selection-start-line="34" selection-start-column="8" selection-end-line="36" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/gateway/validate.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/gateway/gateway.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Back_end/routes/device.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/src/components/Main.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/src/components/Device.vue">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#1562#2264#0" />
+            <element signature="e#1178#1953#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/src/components/Login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="160" column="32" lean-forward="true" selection-start-line="160" selection-start-column="32" selection-end-line="160" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+          <folding>
+            <element signature="n#style#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/src/components/Header.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="806">
+          <caret line="26" column="7" lean-forward="true" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/src/router/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Web/src/router/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#200#243#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

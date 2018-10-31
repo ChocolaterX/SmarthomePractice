@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import hello from '@/components/HelloWorld.vue'
-import header from '../components/Header.vue'
-import footer from '../components/Footer.vue'
+// import header from '../components/Header.vue'
+// import footer from '../components/Footer.vue'
 import login from '../components/Login.vue'
 import main from '../components/Main.vue'
 import device from '../components/Device.vue'
@@ -10,7 +10,7 @@ import scene from '../components/Scene.vue'
 import security from '../components/Security.vue'
 import networking from '../components/Networking.vue'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
 	routes: [{
@@ -27,11 +27,6 @@ export default new Router({
 			path: '/login',
 			name: 'login',
 			component: login
-		},
-		{
-			path: '/main',
-			name: 'main',
-			component: main
 		},
 		{
 			path: '/device',

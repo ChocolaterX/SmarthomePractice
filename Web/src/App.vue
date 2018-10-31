@@ -1,49 +1,57 @@
 <template>
-	<div id="app">
+  <div id="app">
 
-		<div>
-			<header-view></header-view>
-		</div>
-		<router-view></router-view>
-		<div>
-			<footer-view></footer-view>
-		</div>
+    <div>
+      <header-view></header-view>
+    </div>
+    <router-view></router-view>
+    <div>
+      <footer-view></footer-view>
+    </div>
 
-	</div>
+  </div>
 </template>
 
 <script>
-	import headerView from './components/header.vue'
-	import footerView from './components/footer.vue'
-	//	import mainView from './components/main.vue'
-	//	import homeview from './components/home.vue'
+  import headerView from './components/header.vue'
+  import footerView from './components/footer.vue'
+  // import mainView from './components/main.vue'
+  //	import homeview from './components/home.vue'
 
-	export default {
-		name: 'app',
-		components: {
-			//			mainView,
-			headerView,
-			footerView
-			//			homeview
-		},
-		data() {
-			return {}
-		}
-	}
+  export default {
+    name: 'app',
+    components: {
+      //			mainView,
+      headerView,
+      footerView
+      //			homeview
+    },
+    data() {
+      return {}
+    }
+    // mounted() {
+    //   if (sessionStorage.getItem('user')){
+    //
+    //   }
+    //   else{
+    //     this.$router.push('/login');
+    //   }
+    // }
+  }
 </script>
 
 <style scoped>
-	* {
-		font: "微软雅黑";
-	}
-	
-	#app {
-		height: 100%;
-	}
-	
-	body {
-		height: 94%;
-	}
+  * {
+    font: "微软雅黑";
+  }
+
+  #app {
+    height: 100%;
+  }
+
+  body {
+    height: 94%;
+  }
 </style>
 
 <!--<template>

@@ -6,6 +6,7 @@ const cors = require('koa-cors');
 const onerror = require('koa-onerror');
 const bodyparser = require('koa-bodyparser');
 const logger = require('koa-logger');
+const session = require('koa-session');
 
 //require router files
 const index = require('./routes/index');
@@ -19,6 +20,16 @@ const model = require('./server/model');
 // error handler
 onerror(app);
 
+//koa-session
+app.keys = ['this is keys'];//我理解为一个加密的钥匙，类似一个token
+app.use(session({
+    key: 'koa:sess', /** cookie的名称，可以不管 */
+    maxAge: 60*60*1000, /** (number) maxAge in ms (default is 1 days)，cookie的过期时间，这里表示2个小时 */
+    overwrite: true, /** (boolean) can overwrite or not (default true) */
+    httpOnly: true, /** (boolean) httpOnly or not (default true) */
+    signed: true, /** (boolean) signed or not (default true) */
+},app));
+
 // middlewares
 app.use(bodyparser({
     enableTypes: ['json', 'form', 'text']
@@ -31,6 +42,8 @@ app.use(cors());
 app.use(views(__dirname + '/views', {
     extension: 'pug'
 }));
+
+
 
 // logger
 app.use(async (ctx, next) => {

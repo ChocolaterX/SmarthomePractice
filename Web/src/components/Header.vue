@@ -16,7 +16,7 @@
 	export default {
 		methods: {
 			jump(path) {
-				console.log('jump to '+ path);
+				// console.log('jump to '+ path);
 				let destination = '/'+path;
 				this.$router.push(destination);
 			}
