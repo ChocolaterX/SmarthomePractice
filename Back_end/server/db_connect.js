@@ -1,5 +1,7 @@
 let mongoose = require('mongoose');
-let DB_URL = 'mongodb://192.168.10.152:27017/SmartHome_Practice';
+let config = require('../config/config');
+// let DB_URL = 'mongodb://192.168.10.152:27017/SmartHome_Practice';
+let DB_URL = config.DB_URL;
 let options = {
     useNewUrlParser: true   //Set to true to make all connections set the useNewUrlParser option by default.
 };

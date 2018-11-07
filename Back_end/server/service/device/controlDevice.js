@@ -10,7 +10,7 @@ exports.create = async (ctx) => {
     let response = {};
     let deviceId = '';
     let {mac, name} = ctx.request.body;
-    let userId = ctx.request.header.userid;
+    let userId = validator.trim(ctx.request.header.userid);
     let deviceEntity = {
         mac
     };
@@ -25,7 +25,8 @@ exports.create = async (ctx) => {
                     }
                     else if (result) {
                         if (result.user) {
-                            if (result.user !== userId) {
+                            if (validator.trim(result.user + '') !== userId) {
+
                                 response = {
                                     errorCode: 700,
                                     message: '该设备已被他人添加'
@@ -85,20 +86,36 @@ exports.retrievalList = async (ctx) => {
         user: userId
     };
     return new Promise((resolve, reject) => {
-        controlDeviceModel.find(deviceEntity, (err, result) => {
-            if (err) {
-                console.log('异常错误：查询设备失败');
-                reject(err);
-            }
-            else {
-                response = {
-                    errorCode: 0,
-                    message: '查找设备列表成功',
-                    controlDevices: result
-                };
-                resolve(response);
-            }
-        });
+        controlDeviceModel.find(deviceEntity)
+            .sort({type: 1})
+            .exec((err, result) => {
+                if (err) {
+                    console.log('异常错误：查询设备失败');
+                    reject(err);
+                }
+                else {
+                    response = {
+                        errorCode: 0,
+                        message: '查找设备列表成功',
+                        controlDevices: result
+                    };
+                    resolve(response);
+                }
+            });
+        // controlDeviceModel.find(deviceEntity, (err, result) => {
+        //     if (err) {
+        //         console.log('异常错误：查询设备失败');
+        //         reject(err);
+        //     }
+        //     else {
+        //         response = {
+        //             errorCode: 0,
+        //             message: '查找设备列表成功',
+        //             controlDevices: result
+        //         };
+        //         resolve(response);
+        //     }
+        // });
     });
 };
 
@@ -132,7 +149,7 @@ exports.update = async (ctx) => {
             },
             callback => {
                 deviceEntity['name'] = name;
-                controlDeviceModel.updateOne({_id}, {$set: deviceEntity}, (err, result) => {
+                controlDeviceModel.updateOne({_id: deviceId}, {$set: deviceEntity}, (err, result) => {
                     if (err) {
                         console.log('异常错误：更新设备失败');
                         reject(err);
@@ -183,7 +200,7 @@ exports.delete = async (ctx) => {
             callback => {
                 deviceEntity['name'] = null;
                 deviceEntity['user'] = null;
-                controlDeviceModel.updateOne({_id}, {$set: deviceEntity}, (err, result) => {
+                controlDeviceModel.updateOne({_id: deviceId}, {$set: deviceEntity}, (err, result) => {
                     if (err) {
                         console.log('异常错误：删除设备失败');
                         reject(err);

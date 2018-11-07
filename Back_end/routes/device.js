@@ -40,21 +40,27 @@ router.post('/control/update', async (ctx, next) => {
 });
 
 router.post('/control/delete', async (ctx, next) => {
+    console.log('router: /control/delete');
     await controlDeviceService.delete(ctx).then(response => {
+        ctx.body = response;
     }, err => {
-
+        ctx.body = err;
     });
 });
 
 router.post('/control/command', async (ctx, next) => {
     await controlDeviceService.command(ctx).then(response => {
+        ctx.body = response;
     }, err => {
+        ctx.body = err;
     });
 });
 
 router.post('/control/instruction', async (ctx, next) => {
     await controlDeviceService.command(ctx).then(response => {
+        ctx.body = response;
     }, err => {
+        ctx.body = err;
     });
 });
 
@@ -64,38 +70,49 @@ router.post('/control/instruction', async (ctx, next) => {
  */
 router.post('/security/create', async (ctx, next) => {
     await securityDeviceService.create(ctx).then(response => {
+        ctx.body = response;
     }, err => {
+        ctx.body = err;
     });
 });
 
 router.get('/security/list/retrieval', async (ctx, next) => {
     await securityDeviceService.retrievalList(ctx).then(response => {
+        ctx.body = response;
     }, err => {
+        ctx.body = err;
     });
 });
 
 router.post('/security/update', async (ctx, next) => {
     await securityDeviceService.update(ctx).then(response => {
+        ctx.body = response;
     }, err => {
+        ctx.body = err;
     });
 });
 
 router.post('/security/delete', async (ctx, next) => {
     await securityDeviceService.delete(ctx).then(response => {
+        ctx.body = response;
     }, err => {
-
+        ctx.body = err;
     });
 });
 
-router.post('/control/command', async (ctx, next) => {
+router.post('/security/command', async (ctx, next) => {
     await securityDeviceService.command(ctx).then(response => {
+        ctx.body = response;
     }, err => {
+        ctx.body = err;
     });
 });
 
-router.post('/control/instruction', async (ctx, next) => {
+router.post('/security/instruction', async (ctx, next) => {
     await securityDeviceService.command(ctx).then(response => {
+        ctx.body = response;
     }, err => {
+        ctx.body = err;
     });
 });
 

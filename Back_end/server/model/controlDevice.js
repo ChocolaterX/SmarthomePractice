@@ -10,7 +10,6 @@ var controlDeviceSchema = new Schema({
     addedTime: Date, //认证时间
     user: {type: Schema.ObjectId, ref: 'User'}, //如果为null，则表示为尚未被注册使用。
     //gateway: {type: Schema.ObjectId, ref: 'Device'},
-    //region: {type: Schema.ObjectId, ref: 'Region'},    //区域
     //showComponent: Boolean,
     createdTime: Date, //创建时间
     updatedTime: Date,  //最后一次更新时间

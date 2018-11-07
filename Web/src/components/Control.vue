@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>security</p>
+    <p>device</p>
 
     <!-- device list and button-->
     <div>
@@ -10,7 +10,7 @@
           <td>设备名称</td>
           <td>mac地址</td>
           <td>设备类型</td>
-          <td>状态</td>
+          <td>控制命令</td>
           <td>其他操作</td>
         </tr>
         <tr v-for="(device,index) in devices">
@@ -18,20 +18,26 @@
           <td>{{device.name}}</td>
           <td>{{device.mac}}</td>
 
-          <td v-if="device.type===1">智能门磁</td>
-          <td v-if="device.type===2">智能红外感应</td>
-          <td v-if="device.type===3">智能门锁</td>
+          <td v-if="device.type===0">智能网关</td>
+          <td v-if="device.type===1">智能窗帘</td>
+          <td v-if="device.type===2">智能插座</td>
+          <td v-if="device.type===3">智能开关</td>
 
+          <td v-if="device.type===0"></td>
           <td v-if="device.type===1">
-            有人/无人
+            <button v-on:click="commandControl(device._id,'CurtainOpen')">打开</button>
+            <button v-on:click="commandControl(device._id,'CurtainClose')">关闭</button>
           </td>
           <td v-if="device.type===2">
-            有人/无人
+            <button v-on:click="commandControl(device._id,'PowerOn')">通电</button>
+            <button v-on:click="commandControl(device._id,'PowerOff')">断电</button>
           </td>
           <td v-if="device.type===3">
-
+            <button v-on:click="commandControl(device._id,'SwitchLeftOn')">左路通电</button>
+            <button v-on:click="commandControl(device._id,'SwitchLeftOff')">左路断电</button>
+            <button v-on:click="commandControl(device._id,'SwitchRightOn')">右路通电</button>
+            <button v-on:click="commandControl(device._id,'SwitchRightOff')">右路断电</button>
           </td>
-
           <td>
             <button v-on:click="updateDevice(device._id,deviceName)">更新设备</button>
             <button v-on:click="deleteDevice(device._id)">删除设备</button>
@@ -49,7 +55,7 @@
       <button v-on:click="retrievalDeviceList()">获取设备</button>
     </div>
 
-    <!-- command security area -->
+    <!-- command control area -->
     <div>
       <p>当前指令：{{deviceCommand}}</p>
       <textarea v-model="deviceCommand" placeholder="请输入指令"></textarea>
@@ -85,7 +91,7 @@
           });
         }
         else {
-          this.$axios.post(BASEPATH + '/device/security/create', {
+          this.$axios.post(BASEPATH + '/device/control/create', {
             mac, name
           }, {
             headers: {'userid': sessionStorage.getItem('userid')}
@@ -115,12 +121,12 @@
       },
 
       retrievalDeviceList() {
-        this.$axios.get(BASEPATH + '/device/security/list/retrieval', {
+        this.$axios.get(BASEPATH + '/device/control/list/retrieval', {
           headers: {'userid': sessionStorage.getItem('userid')}
         }).then(response => {
           console.log(response);
           if (response.data.errorCode === 0) {
-            this.devices = response.data.securityDevices;
+            this.devices = response.data.controlDevices;
           }
           else {
             this.$message({
@@ -151,7 +157,7 @@
           });
         }
         else {
-          this.$axios.post(BASEPATH + '/device/security/update', {
+          this.$axios.post(BASEPATH + '/device/control/update', {
             deviceId, name
           }, {
             headers: {'userid': sessionStorage.getItem('userid')}
@@ -195,7 +201,7 @@
           });
         }
         else {
-          this.$axios.post(BASEPATH + '/device/security/delete', {
+          this.$axios.post(BASEPATH + '/device/control/delete', {
             deviceId
           }, {
             headers: {'userid': sessionStorage.getItem('userid')}
@@ -224,7 +230,7 @@
         }
       },
 
-      commandSecurity(deviceId, command) {
+      commandControl(deviceId, command) {
         if (deviceId === '' || command === '') {
           this.$message({
             type: 'info',
@@ -239,7 +245,7 @@
           });
         }
         else {
-          this.$axios.post(BASEPATH + '/device/security/command', {
+          this.$axios.post(BASEPATH + '/device/control/command', {
             deviceId,
             command
           }, {
@@ -255,7 +261,7 @@
         }
       },
 
-      instructionSecurity(instruction) {
+      instructionControl(instruction) {
 
       },
 
@@ -269,12 +275,12 @@
     //此处使用mounted:()=>{} 就不正常，原因不明
     //加载设备列表
     mounted() {
-      this.$axios.get(BASEPATH + '/device/security/list/retrieval', {
+      this.$axios.get(BASEPATH + '/device/control/list/retrieval', {
         headers: {'userid': sessionStorage.getItem('userid')}
       }).then(response => {
         console.log(response);
         if (response.data.errorCode === 0) {
-          this.devices = response.data.securityDevices;
+          this.devices = response.data.controlDevices;
           // console.log(vm.devices);
         }
         else {
