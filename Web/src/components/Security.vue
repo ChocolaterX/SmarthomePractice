@@ -23,13 +23,17 @@
           <td v-if="device.type===3">智能门锁</td>
 
           <td v-if="device.type===1">
-            有人/无人
+            <label v-if="device.state==='01'">打开</label>
+            <label v-if="device.state==='00'">关闭</label>
+            <label v-if="device.state!=='01' && device.state!=='00'">状态未知</label>
           </td>
           <td v-if="device.type===2">
-            有人/无人
+            <label v-if="device.state==='01'">有人</label>
+            <label v-if="device.state==='00'">无人</label>
+            <label v-if="device.state!=='01' && device.state!=='00'">状态未知</label>
           </td>
           <td v-if="device.type===3">
-
+            <label>正常</label>
           </td>
 
           <td>
@@ -41,12 +45,13 @@
     </div>
 
     <br><br>
-
     <div>
       <textarea v-model="deviceMac" placeholder="请输入要添加的设备mac地址"></textarea>
       <textarea v-model="deviceName" placeholder="请输入要添加的设备名称"></textarea>
       <button v-on:click="addDevice(deviceMac,deviceName)">添加设备</button>
       <button v-on:click="retrievalDeviceList()">获取设备</button>
+      <button v-on:click="setRefreshing(keepRefreshing)" v-if="!keepRefreshing">持续刷新设备</button>
+      <button v-on:click="setRefreshing(keepRefreshing)" v-if="keepRefreshing">停止刷新设备</button>
     </div>
 
     <!-- command security area -->
@@ -61,11 +66,11 @@
 </template>
 
 <script>
-  let deviceMac, deviceName, deviceCommand = '', showTips = false, devices;
+  let deviceMac, deviceName, deviceCommand = '', showTips = false, devices, keepRefreshing = false;
   export default {
     data() {
       return {
-        devices, deviceMac, deviceName, deviceCommand, showTips
+        devices, deviceMac, deviceName, deviceCommand, showTips, keepRefreshing
       }
     },
 
@@ -222,6 +227,19 @@
             });
           });
         }
+      },
+
+      //设定是否需要定时刷新设备状态
+      //点击停止按钮之后，依然会运行少数几次轮询
+      setRefreshing(setting) {
+        this.keepRefreshing = !setting;
+
+        let polling = setInterval(() => {
+          this.retrievalDeviceList();
+          if(!this.keepRefreshing){
+            clearInterval(polling);
+          }
+        }, 2000);
       },
 
       commandSecurity(deviceId, command) {

@@ -252,7 +252,7 @@
             headers: {'userid': sessionStorage.getItem('userid')}
           }).then(response => {
             console.log(response);
-          }).catch(err => {
+          }).catch(error => {
             this.$message({
               message: '更新设备失败，服务器异常',
               type: 'error'

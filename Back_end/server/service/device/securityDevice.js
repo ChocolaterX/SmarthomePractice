@@ -219,3 +219,99 @@ exports.instruction = async (ctx) => {
     });
 };
 
+//服务器接收网关参数，解析出报警设备指令后调用此方法
+exports.formatInstruction = async (instruction) => {
+    let response = {};
+    let mac = instruction.substring(28, 44).toUpperCase();
+    let deviceEntity = {mac};
+    let deviceId = '';
+    let message = '';
+    let state = '';
+
+    return new Promise((resolve, reject) => {
+        asyncModule.waterfall([
+            callback => {
+                securityDeviceModel.findOne(deviceEntity)
+                    .exec((err, result) => {
+                        if (err) {
+                            console.log('异常错误：查找报警设备失败');
+                            reject(err);
+                        }
+                        else if (result) {
+                            deviceId = result._id;
+                            callback();
+                        }
+                        else {
+                            response = {
+                                errorCode: 700,
+                                message: '当前系统中未找到该设备'
+                            };
+                            resolve(response);
+                        }
+                    });
+            },
+            callback => {
+                if (instruction.substring(48, 50) === '0d') {
+                    if (instruction.substring(50, 52) === '01') {
+                        message = '门磁打开';
+                        state = '01';
+                    }
+                    else if (instruction.substring(50, 52) === '00') {
+                        message = '门磁关闭';
+                        state = '00';
+                    }
+                    else {
+                        message = '门磁指令无法识别';
+                        response = {
+                            errorCode: 700,
+                            message
+                        };
+                        resolve(response);
+                    }
+                }
+                else if (instruction.substring(48, 50) === '0e') {
+                    if (instruction.substring(50, 52) === '01') {
+                        message = '红外感应有人';
+                        state = '01';
+                    }
+                    else if (instruction.substring(50, 52) === '00') {
+                        message = '红外感应无人';
+                        state = '00';
+                    }
+                    else {
+                        message = '红外感应指令无法识别';
+                        response = {
+                            errorCode: 700,
+                            message
+                        };
+                        resolve(response);
+                    }
+                }
+                else {
+                    message = '报警设备类型不明';
+                    response = {
+                        errorCode: 700,
+                        message
+                    };
+                    resolve(response);
+                }
+                deviceEntity['state'] = state;
+                securityDeviceModel.updateOne({_id: deviceId}, {$set: deviceEntity}, (err, result) => {
+                    if (err) {
+                        console.log('异常错误：更新报警设备状态失败');
+                        reject(err);
+                    }
+                    else {
+                        response = {
+                            errorCode: 0,
+                            message: '识别指令成功：' + message
+                        };
+                        callback();
+                    }
+                });
+            }
+        ], () => {
+            resolve(response);
+        });
+    });
+};

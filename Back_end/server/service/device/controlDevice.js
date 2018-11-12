@@ -1,8 +1,8 @@
 const asyncModule = require('async');
 const validator = require('validator');
 const deviceConfig = require('../../../config/device');
-const userModel = require('../../model/user');
 const controlDeviceModel = require('../../model/controlDevice');
+const gatewayModule = require('../../../gateway/index');
 
 //添加设备
 //参数检查
@@ -219,17 +219,3 @@ exports.delete = async (ctx) => {
         });
     });
 };
-
-//使用控制按钮进行设备控制
-exports.command = async (ctx) => {
-    return new Promise((resolve, reject) => {
-    });
-};
-
-//使用指令进行设备控制
-exports.instruction = async (ctx) => {
-    let instruction = ctx.body.request;
-    return new Promise((resolve, reject) => {
-    });
-};
-

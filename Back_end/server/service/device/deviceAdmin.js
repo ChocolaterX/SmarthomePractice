@@ -33,6 +33,7 @@ function createSecurityDevice(mac, type) {
     });
 }
 
+//存MAC地址 大写
 
 // createControlDevice('gateway001', 0);
 // createControlDevice('gateway002', 0);
