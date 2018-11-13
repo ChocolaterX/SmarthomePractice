@@ -15,11 +15,6 @@ exports.command = async (ctx) => {
         _id: deviceId,
         user: userId
     };
-    //
-    // return {
-    //     errorCode: 0,
-    //     message:'test'
-    // };
 
     return new Promise((resolve, reject) => {
         asyncModule.waterfall([
@@ -86,12 +81,25 @@ exports.command = async (ctx) => {
 
 //使用指令进行设备控制
 exports.instruction = async (ctx) => {
-    let instruction = ctx.body.request;
+    let {instruction} = ctx.request.body;
+    let response = {};
+
+    //instruction格式处理
+    instruction = validator.trim(instruction);
+    instruction = instruction.replace(' ', '');
+    console.log(instruction);
 
     return new Promise((resolve, reject) => {
+        gatewayModule.writeCommand(instruction);
+        response = {
+            errorCode: 0,
+            message: '控制指令发送成功'
+        };
+        resolve(response);
     });
 };
 
+//将命令转译成指令
 function formatControlInstruction(gateways, device, command) {
     let instructions = [], instruction = '', parityByte;
     let cmd0, cmd1, d10, d11;
@@ -156,6 +164,8 @@ function formatControlInstruction(gateways, device, command) {
         instruction = 'FC' + instruction + parityByte;
         instructions.push(instruction);
     }
+    //处理一下控制返回消息
+
 
     //console.log('formatDeviceCommand:');
     console.log('instructions:');
@@ -164,11 +174,10 @@ function formatControlInstruction(gateways, device, command) {
     return instructions;
 }
 
+//CRC校验
 function checkParity(instruction) {
-    //00 15 00 01 30 EB 1F 03 D0 DD 01 10 01 00 12 4B 00 0F F6 AA 36 08 01
-    //FB
-    var length = instruction.length;
-    var checkResult = hexStrToDec(instruction.substr(0, 2));
+    let length = instruction.length;
+    let checkResult = hexStrToDec(instruction.substr(0, 2));
     for (let i = 2; i < length; i = i + 2) {
         checkResult = checkResult ^ hexStrToDec(instruction.substr(i, 2));
     }
@@ -178,7 +187,7 @@ function checkParity(instruction) {
 
 //16进制（字符串）转成10进制数字
 function hexStrToDec(str) {
-    var num = 0;
+    let num = 0;
     switch (str.charAt(0)) {
         case '0':
             num += 0;
@@ -324,9 +333,9 @@ function hexStrToDec(str) {
 
 //10进制数字转成16进制（字符串）
 function decToHexStr(dec) {
-    var str = '';
-    var firstBit = Math.floor(dec / 16);
-    var secondBit = dec % 16;
+    let str = '';
+    let firstBit = Math.floor(dec / 16);
+    let secondBit = dec % 16;
     switch (firstBit) {
         case 0:
             str = str + '0';

@@ -57,9 +57,9 @@
 
     <!-- command control area -->
     <div>
-      <p>当前指令：{{deviceCommand}}</p>
-      <textarea v-model="deviceCommand" placeholder="请输入指令"></textarea>
-      <button v-on:click="pushCommand(deviceCommand)">发送指令</button>
+      <p>当前指令：{{instruction}}</p>
+      <textarea v-model="instruction" placeholder="请输入指令"></textarea>
+      <button v-on:click="instructionControl(instruction)">发送指令</button>
       <button v-on:click="changeShowTips">开关提示</button>
       <p v-show="showTips">提示：待更新</p>
     </div>
@@ -67,11 +67,11 @@
 </template>
 
 <script>
-  let deviceMac, deviceName, deviceCommand = '', showTips = false, devices;
+  let deviceMac, deviceName, instruction = '', showTips = false, devices;
   export default {
     data() {
       return {
-        devices, deviceMac, deviceName, deviceCommand, showTips
+        devices, deviceMac, deviceName, instruction, showTips
       }
     },
 
@@ -262,7 +262,33 @@
       },
 
       instructionControl(instruction) {
-
+        if (instruction === '') {
+          this.$message({
+            type: 'info',
+            message: '指令不能为空'
+          });
+        }
+        else if (sessionStorage.getItem('userid') == null) {
+          console.log('未登录');
+          this.$message({
+            type: 'info',
+            message: '请登录'
+          });
+        }
+        else {
+          this.$axios.post(BASEPATH + '/device/control/instruction', {
+            instruction
+          }, {
+            headers: {'userid': sessionStorage.getItem('userid')}
+          }).then(response => {
+            console.log(response);
+          }).catch(error => {
+            this.$message({
+              message: '发送控制指令失败，服务器异常:'+error,
+              type: 'error'
+            });
+          });
+        }
       },
 
       changeShowTips() {

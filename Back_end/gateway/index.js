@@ -5,18 +5,16 @@ const securityDeviceModule = require('../server/service/device/securityDevice');
 
 //全局变量
 let Clients = [];           //已连接的客户端
-let infraredCommand = '';       //考虑一下什么时候清零
 
 /**
  * 向网关发送写指令
  * @param instruction   String形式的指令
- * @param type   指令格式，包括device, infrared
- * 控制命令的长度为25
+ * 控制命令的长度为25 byte
  */
 exports.writeCommand = function (instruction) {
-    console.log('\nwrite command\n');
+    console.log('write command');
     console.log('instruction:' + instruction);
-    console.log('instruction length:' + instruction.length);
+    // console.log('instruction length:' + instruction.length);
 
     //let buf = new Buffer(25);
     let length = Math.floor(instruction.length / 2);

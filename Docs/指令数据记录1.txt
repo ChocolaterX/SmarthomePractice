@@ -1,0 +1,44 @@
+控制插座 及其反馈
+
+instructions:
+[ 'FC00150001202020303008011001000D6F000BE63DC401005B' ]
+
+write command
+
+instruction:FC00150001202020303008011001000D6F000BE63DC401005B
+instruction length:50
+POST /device/control/command - 6ms
+  -x- POST /device/control/command 200 6ms 40b
+  --> POST /device/control/command 200 6ms 40b
+server got data from client:  fc00160001202020303008031002000d6f000be63dc401010058fc00150001202020303008021001000d6f000be63dc4010058
+server got data from client:  fc00160001202020303008031002000d6f000be63dc401000059
+
+
+控制开关 及其反馈
+instructions:
+[ 'FC0015000120202030300801100100124B000D4B3A58080059' ]
+
+write command
+
+instruction:FC0015000120202030300801100100124B000D4B3A58080059
+instruction length:50
+POST /device/control/command - 5ms
+  -x- POST /device/control/command 200 7ms 40b
+  --> POST /device/control/command 200 7ms 40b
+server got data from client:  fc0015000120202030300802100100124b000d4b3a5808005a
+server got data from client:  fc0016000120202030300803100200124b000d4b3a580800d58e
+  <-- POST /device/control/command
+router: /control/command
+instructions:
+[ 'FC0015000120202030300801100100124B000D4B3A58080158' ]
+
+write command
+
+instruction:FC0015000120202030300801100100124B000D4B3A58080158
+instruction length:50
+POST /device/control/command - 6ms
+  -x- POST /device/control/command 200 7ms 40b
+  --> POST /device/control/command 200 7ms 40b
+server got data from client:  fc0015000120202030300802100100124b000d4b3a5808005a
+server got data from client:  fc0016000120202030300803100200124b000d4b3a580801d58f
+
