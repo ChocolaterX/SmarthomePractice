@@ -67,6 +67,15 @@ router.post('/control/instruction', async (ctx, next) => {
     });
 });
 
+router.get('/control/console', async (ctx, next) => {
+    console.log('router: /control/console');
+    await controlDeviceService.console(ctx).then(response => {
+        ctx.body = response;
+    }, err => {
+        ctx.body = err;
+    });
+});
+
 /*
  * security device
  * contains: create, retrieval, update, delete, command control, instruction control
@@ -107,18 +116,27 @@ router.post('/security/delete', async (ctx, next) => {
     });
 });
 
-router.post('/security/command', async (ctx, next) => {
-    console.log('router: /security/command');
-    await securityDeviceService.command(ctx).then(response => {
-        ctx.body = response;
-    }, err => {
-        ctx.body = err;
-    });
-});
+// router.post('/security/command', async (ctx, next) => {
+//     console.log('router: /security/command');
+//     await securityDeviceService.command(ctx).then(response => {
+//         ctx.body = response;
+//     }, err => {
+//         ctx.body = err;
+//     });
+// });
 
-router.post('/security/instruction', async (ctx, next) => {
-    console.log('router: /security/instruction');
-    await securityDeviceService.command(ctx).then(response => {
+// router.post('/security/instruction', async (ctx, next) => {
+//     console.log('router: /security/instruction');
+//     await securityDeviceService.instruction(ctx).then(response => {
+//         ctx.body = response;
+//     }, err => {
+//         ctx.body = err;
+//     });
+// });
+
+router.get('/security/console', async (ctx, next) => {
+    console.log('router: /security/console');
+    await securityDeviceService.console(ctx).then(response => {
         ctx.body = response;
     }, err => {
         ctx.body = err;

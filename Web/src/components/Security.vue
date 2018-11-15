@@ -54,6 +54,15 @@
       <button v-on:click="setRefreshing(keepRefreshing)" v-if="keepRefreshing">停止刷新设备</button>
     </div>
 
+    <!-- console -->
+    <div>
+      <p>{{consoleInstructions}}
+      </p>
+      <button v-on:click="getConsole()">获取控制台指令</button>
+      <button v-on:click="setKeepGettingConsole(keepGettingConsole)" v-if="!keepGettingConsole">持续获取控制台</button>
+      <button v-on:click="setKeepGettingConsole(keepGettingConsole)" v-if="keepGettingConsole">停止获取控制台</button>
+    </div>
+
     <!-- command security area -->
     <div>
       <p>当前指令：{{deviceCommand}}</p>
@@ -66,11 +75,13 @@
 </template>
 
 <script>
-  let deviceMac, deviceName, deviceCommand = '', showTips = false, devices, keepRefreshing = false;
+  let deviceMac, deviceName, deviceCommand = '', devices, consoleInstructions;
+  let showTips = false, keepRefreshing = false, keepGettingConsole = false;
   export default {
     data() {
       return {
-        devices, deviceMac, deviceName, deviceCommand, showTips, keepRefreshing
+        devices, deviceMac, deviceName, deviceCommand, consoleInstructions,
+        showTips, keepRefreshing, keepGettingConsole
       }
     },
 
@@ -229,27 +240,8 @@
         }
       },
 
-      //设定是否需要定时刷新设备状态
-      //点击停止按钮之后，依然会运行少数几次轮询
-      setRefreshing(setting) {
-        this.keepRefreshing = !setting;
-
-        let polling = setInterval(() => {
-          this.retrievalDeviceList();
-          if(!this.keepRefreshing){
-            clearInterval(polling);
-          }
-        }, 2000);
-      },
-
-      commandSecurity(deviceId, command) {
-        if (deviceId === '' || command === '') {
-          this.$message({
-            type: 'info',
-            message: '设备ID或控制命令有误'
-          });
-        }
-        else if (sessionStorage.getItem('userid') == null) {
+      getConsole() {
+        if (sessionStorage.getItem('userid') == null) {
           console.log('未登录');
           this.$message({
             type: 'info',
@@ -257,25 +249,88 @@
           });
         }
         else {
-          this.$axios.post(BASEPATH + '/device/security/command', {
-            deviceId,
-            command
-          }, {
+          this.$axios.get(BASEPATH + '/device/security/console', {
             headers: {'userid': sessionStorage.getItem('userid')}
           }).then(response => {
             console.log(response);
-          }).catch(err => {
+            if (response.data.errorCode === 0) {
+              //未考虑多个网关的情况
+              this.consoleInstructions = response.data.consoleResult[0].instructions;
+            }
+            else {
+              this.$message({
+                message: '无法获取控制台输出',
+                type: 'error'
+              });
+            }
+          }).catch(error => {
             this.$message({
-              message: '更新设备失败，服务器异常',
+              message: '获取控制台输出失败，服务器异常:' + error,
               type: 'error'
             });
           });
         }
       },
 
-      instructionSecurity(instruction) {
+      //设定是否需要定时刷新设备状态
+      //点击停止按钮之后，依然会运行少数几次轮询
+      setRefreshing(setting) {
+        this.keepRefreshing = !setting;
 
+        let polling = setInterval(() => {
+          this.retrievalDeviceList();
+          if (!this.keepRefreshing) {
+            clearInterval(polling);
+          }
+        }, 2000);
       },
+
+      //设定是否需要持续获取控制台
+      setKeepGettingConsole(setting) {
+        this.keepGettingConsole = !setting;
+
+        let polling = setInterval(() => {
+          this.getConsole();
+          if (!this.keepGettingConsole) {
+            clearInterval(polling);
+          }
+        }, 2000)
+      },
+
+      // commandSecurity(deviceId, command) {
+      //   if (deviceId === '' || command === '') {
+      //     this.$message({
+      //       type: 'info',
+      //       message: '设备ID或控制命令有误'
+      //     });
+      //   }
+      //   else if (sessionStorage.getItem('userid') == null) {
+      //     console.log('未登录');
+      //     this.$message({
+      //       type: 'info',
+      //       message: '请登录'
+      //     });
+      //   }
+      //   else {
+      //     this.$axios.post(BASEPATH + '/device/security/command', {
+      //       deviceId,
+      //       command
+      //     }, {
+      //       headers: {'userid': sessionStorage.getItem('userid')}
+      //     }).then(response => {
+      //       console.log(response);
+      //     }).catch(err => {
+      //       this.$message({
+      //         message: '更新设备失败，服务器异常',
+      //         type: 'error'
+      //       });
+      //     });
+      //   }
+      // },
+      //
+      // instructionSecurity(instruction) {
+      //
+      // },
 
       changeShowTips() {
         console.log('change show tips');

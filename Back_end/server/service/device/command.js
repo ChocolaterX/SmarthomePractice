@@ -86,7 +86,10 @@ exports.instruction = async (ctx) => {
 
     //instruction格式处理
     instruction = validator.trim(instruction);
-    instruction = instruction.replace(' ', '');
+    //去掉空格
+    instruction = instruction.replace(/\s*/g, "");
+    instruction = instruction.replace(/^\s*|\s*$/g, "");
+
     console.log(instruction);
 
     return new Promise((resolve, reject) => {
@@ -167,9 +170,8 @@ function formatControlInstruction(gateways, device, command) {
     //处理一下控制返回消息
 
 
-    //console.log('formatDeviceCommand:');
-    console.log('instructions:');
-    console.log(instructions);
+    // console.log('instructions:');
+    // console.log(instructions);
 
     return instructions;
 }

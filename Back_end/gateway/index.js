@@ -1,17 +1,22 @@
 const net = require('net');
+const validator = require('validator');
 
 const config = require('../config/config');
 const securityDeviceModule = require('../server/service/device/securityDevice');
 
 //全局变量
 let Clients = [];           //已连接的客户端
+//[{gatewayMac,instructions[string,string]},{}]
+let ConsoleOfControl = [];      //分别存储每个网关的控制台消息
+let ConsoleOfSecurity = [];
+let ConsoleOfNetworking = [];
 
 /**
  * 向网关发送写指令
  * @param instruction   String形式的指令
  * 控制命令的长度为25 byte
  */
-exports.writeCommand = function (instruction) {
+exports.writeCommand = instruction => {
     console.log('write command');
     console.log('instruction:' + instruction);
     // console.log('instruction length:' + instruction.length);
@@ -24,6 +29,13 @@ exports.writeCommand = function (instruction) {
     //buf.write('FC0015000120202020200801100100124B000FF6AA36080119', 0, 25, 'hex');
     //FC 0015 0001 202020202008 01 1001 00124B000FF6AA36 0801 19
     //FC 0015 0001 202020303008 01 1001 000D6F000BE63DC4 0101 5A'
+
+
+    // DeprecationWarning: Buffer() is deprecated due to security and usability
+    // issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(),
+    // or Buffer.from() methods instead.
+
+
     buf.write(instruction, 0, length, 'hex');
     //client.write(buf);
     //console.log(Clients[0]);
@@ -43,6 +55,102 @@ exports.writeCommand = function (instruction) {
         console.log('当前未连接网关');
     }
 };
+
+/**
+ * 获取控制台消息
+ * @param gateways      网关（数组）
+ * @param type          控制台的类型
+ */
+exports.getConsole = (gateways, type) => {
+    let tempConsole;
+    let response;
+    let consoleResult = [];
+    switch (type) {
+        case 'control': {
+            tempConsole = ConsoleOfControl;
+            break;
+        }
+        case 'security': {
+            tempConsole = ConsoleOfSecurity;
+            break;
+        }
+        case 'networking': {
+            tempConsole = ConsoleOfNetworking;
+            break;
+        }
+        default : {
+            response = {
+                errorCode: 1000,
+                message: '类型有误'
+            }
+        }
+    }
+
+    for (let i = 0; i < gateways.length; i++) {
+        for (let j = 0; j < tempConsole.length; j++) {
+            if (validator.trim(tempConsole[j].gatewayMac) === validator.trim(gateways[i].mac)) {
+                consoleResult.push(tempConsole[j]);
+            }
+        }
+    }
+
+    response = {
+        errorCode: 0,
+        consoleResult
+    };
+    return response;
+};
+
+function pushConsole(instruction) {
+    let gatewayMac = instruction.substr(10, 12);
+    let gatewayExists = false;
+    let tempConsoleItem = {};       //如当前不存在，则用此变量保存一条console项
+    let tempInstructions = [];
+
+    if (instruction.substring(0, 6) === 'FC000C') {
+
+    }
+    if (instruction.substring(0, 6) === 'FC0016' || instruction.substring(0, 6) === 'FC0015') {
+        for (let i = 0; i < ConsoleOfControl.length; i++) {
+            if (ConsoleOfControl[i].gatewayMac === gatewayMac) {
+                gatewayExists = true;
+                ConsoleOfControl[i].instructions.push(instruction);
+                if (ConsoleOfControl[i].instructions.length > 10) {
+                    ConsoleOfControl[i].instructions.splice(0, 1);
+                }
+            }
+        }
+        if (!gatewayExists) {
+            tempInstructions.push(instruction);
+            tempConsoleItem = {
+                gatewayMac,
+                instructions: tempInstructions
+            };
+            ConsoleOfControl.push(tempConsoleItem);
+        }
+    }
+    if (instruction.substring(0, 6) === 'FC0018') {
+        for (let i = 0; i < ConsoleOfSecurity.length; i++) {
+            if (ConsoleOfSecurity[i].gatewayMac === gatewayMac) {
+                gatewayExists = true;
+                ConsoleOfSecurity[i].instructions.push(instruction);
+                if (ConsoleOfSecurity[i].instructions.length > 10) {
+                    ConsoleOfSecurity[i].instructions.splice(0, 1);
+                }
+            }
+        }
+        if (!gatewayExists) {
+            tempInstructions.push(instruction);
+            tempConsoleItem = {
+                gatewayMac,
+                instructions: tempInstructions
+            };
+            ConsoleOfSecurity.push(tempConsoleItem);
+        }
+    }
+
+}
+
 
 /**
  * 建立Socket连接，处理网关传过来的数据、发送控制指令等
@@ -67,13 +175,6 @@ socketServer.on('connection', function (client) {
         Clients[1] = Clients[2];
         Clients[2] = clientTemp;
     }
-    //if (Clients.length == 3) {
-    //for (let j = 0; j < Clients.length; j++) {
-    //    console.log('\n\n');
-    //    console.log(Clients[j]);
-    //    console.log('\n\n');
-    //}
-    //}
 
     //console.log(client);
     //fs.appendFile('clients.txt', client, function (err) {
@@ -108,8 +209,16 @@ socketServer.on('connection', function (client) {
 
     client.on('data', function (data) {
         console.log('server got data from client: ', data.toString());
+
+        //解析多条指令并在一起的情况
+
+
         //console.log(Clients);
         let instruction = data.toString();
+        instruction = instruction.toUpperCase();
+        pushConsole(instruction);
+        // console.log('\nconsoleOfcontrol:');
+        // console.log(ConsoleOfControl);
 
         /**
          * 判断从网关传来的数据类型
@@ -122,19 +231,24 @@ socketServer.on('connection', function (client) {
         //fc000c00012020203030080301010127fc0030000120202030300803010203000d6f000be63dc401005100005043c9a339556c01010ecb005043c90324399601010dc11e
         //心跳包
 
-        if (instruction.substring(0, 6) === 'fc000c') {
-            console.log('网关连接:  ' + Date());
+        if (instruction.substring(0, 6) === 'FC000C') {
+            // console.log('网关连接:  ' + Date());
         }
-        if (instruction.substring(0, 6) === 'fc0015') {
+        if (instruction.substring(0, 6) === 'FC0015') {
 
         }
-        if (instruction.substring(0, 6) === 'fc0018') {
+        if (instruction.substring(0, 6) === 'FC0016') {
+
+        }
+        if (instruction.substring(0, 6) === 'FC0018') {
             if (instruction.substring(24, 26) === '30') {            //报警设备
-                if (instruction.substring(46, 50) === '010d') {           //门磁
+                if (instruction.substring(46, 50) === '010D') {           //门磁
                     //fc0018 000130eb1f03d0dd03 3002 005043c903246e27 01 0402 0102 52  旧版
                     //fc0018 000120202030300803 3002 005043c903243996 01 010d 0102 5c  门磁打开
                     //fc0018 000120202030300803 3002 005043c903243996 01 010d 0002 5d  门磁关闭
                     //fc0018 000120202030300803 3002 005043c9a339556c 01 010e 0101 77  红外
+                    //fc0018 000120202030300803 3002 005043c9a339556c 01 010e 0001 76
+
 
                     console.log('门磁指令');
                     securityDeviceModule.formatInstruction(instruction).then(response => {
@@ -143,7 +257,7 @@ socketServer.on('connection', function (client) {
                         console.log(err);
                     });
                 }
-                else if (instruction.substring(46, 50) === '010e') {
+                else if (instruction.substring(46, 50) === '010E') {
                     console.log('红外感应指令');
                     securityDeviceModule.formatInstruction(instruction).then(response => {
                         console.log(response.message);
@@ -198,52 +312,3 @@ socketServer.on('close', function () {
 );
 
 socketServer.listen(config.GATEWAY_PORT);
-
-
-/*let socketServer = net.createServer(function (socket) {
- console.log('client connected');
-
- socket.setEncoding("hex");
- // 监听客户端的数据
- socket.on('data', function (data) {
- console.log('server got data from client: ', data.toString());
- });
-
- // 监听客户端断开连接事件
- socket.on('end', function (data) {
- console.log('connection closed');
- });
-
- //被command.js调用
- let buf = new Buffer(25);
- buf.write('FC0015000120202020200801100100124B000FF6AA36080018', 0, 25, 'hex');
- socket.write(buf);
-
- //setInterval(function () {
- //    for (let i = 0; i < commandBuffer.length; i++) {
- //        let buf = new Buffer(25);
- //        buf.write(commandBuffer[i], 0, 25, 'hex');
- //        console.log('buffer:');
- //        console.log(buf);
- //        socket.write(buf);
- //    }
- //    commandBuffer = [];
- //}, 2000);
-
-
- //发送数据给客户端
- //socket.write('FC0015000120202020200801100100124B000FF6AA36080018');
- //socket.write([0xFC,0x00,0x15,0x00,0x01,0x20,0x20,0x20,0x20,0x20,0x08,0x01,0x10,0x01,0x00,0x12,0x4B,0x00,0x0F,0xF6,0xAA,0x36,0x08,0x00,0x18]);
- //let data = [0xFC, 0x00, 0x15, 0x00, 0x01, 0x20, 0x20, 0x20, 0x20, 0x20, 0x08, 0x01, 0x10, 0x01, 0x00, 0x12, 0x4B, 0x00, 0x0F, 0xF6, 0xAA, 0x36, 0x08, 0x00, 0x18];
- //socket.write(data);
-
- //测试成功
- //let buf = new Buffer(25);
- //buf.write('FC0015000120202020200801100100124B000FF6AA36080018', 0, 25, 'hex');
- //socket.write(buf);
- });
-
- socketServer.listen(config.cloud.socketPort, function () {
- console.log('Socket port started on port ' + config.cloud.socketPort);
- });*/
-

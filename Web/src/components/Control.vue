@@ -53,12 +53,23 @@
       <textarea v-model="deviceName" placeholder="请输入要添加的设备名称"></textarea>
       <button v-on:click="addDevice(deviceMac,deviceName)">添加设备</button>
       <button v-on:click="retrievalDeviceList()">获取设备</button>
+      <button v-on:click="setRefreshing(keepRefreshing)" v-if="!keepRefreshing">持续刷新设备</button>
+      <button v-on:click="setRefreshing(keepRefreshing)" v-if="keepRefreshing">停止刷新设备</button>
     </div>
 
-    <!-- command control area -->
+    <!-- console -->
+    <div>
+      <p>{{consoleInstructions}}
+      </p>
+      <button v-on:click="getConsole()">获取控制台指令</button>
+      <button v-on:click="setKeepGettingConsole(keepGettingConsole)" v-if="!keepGettingConsole">持续获取控制台</button>
+      <button v-on:click="setKeepGettingConsole(keepGettingConsole)" v-if="keepGettingConsole">停止获取控制台</button>
+    </div>
+
+    <!--command control area-->
     <div>
       <p>当前指令：{{instruction}}</p>
-      <textarea v-model="instruction" placeholder="请输入指令"></textarea>
+      <textarea v-model="instruction" placeholder="请输入指令" cols="120"></textarea>
       <button v-on:click="instructionControl(instruction)">发送指令</button>
       <button v-on:click="changeShowTips">开关提示</button>
       <p v-show="showTips">提示：待更新</p>
@@ -67,11 +78,13 @@
 </template>
 
 <script>
-  let deviceMac, deviceName, instruction = '', showTips = false, devices;
+  let deviceMac, deviceName, instruction = '', devices, consoleInstructions;
+  let showTips = false, keepRefreshing = false, keepGettingConsole = false;
   export default {
     data() {
       return {
-        devices, deviceMac, deviceName, instruction, showTips
+        devices, deviceMac, deviceName, instruction, consoleInstructions,
+        showTips, keepRefreshing, keepGettingConsole
       }
     },
 
@@ -284,11 +297,68 @@
             console.log(response);
           }).catch(error => {
             this.$message({
-              message: '发送控制指令失败，服务器异常:'+error,
+              message: '发送控制指令失败，服务器异常:' + error,
               type: 'error'
             });
           });
         }
+      },
+
+      getConsole() {
+        if (sessionStorage.getItem('userid') == null) {
+          console.log('未登录');
+          this.$message({
+            type: 'info',
+            message: '请登录'
+          });
+        }
+        else {
+          this.$axios.get(BASEPATH + '/device/control/console', {
+            headers: {'userid': sessionStorage.getItem('userid')}
+          }).then(response => {
+            console.log(response);
+            if (response.data.errorCode === 0) {
+              //未考虑多个网关的情况
+              this.consoleInstructions = response.data.consoleResult[0].instructions;
+            }
+            else {
+              this.$message({
+                message: '无法获取控制台输出',
+                type: 'error'
+              });
+            }
+          }).catch(error => {
+            this.$message({
+              message: '获取控制台输出失败，服务器异常:' + error,
+              type: 'error'
+            });
+          });
+        }
+      },
+
+      //设定是否需要定时刷新设备状态
+      //点击停止按钮之后，依然会运行少数几次轮询
+      setRefreshing(setting) {
+        this.keepRefreshing = !setting;
+
+        let polling = setInterval(() => {
+          this.retrievalDeviceList();
+          if (!this.keepRefreshing) {
+            clearInterval(polling);
+          }
+        }, 2000);
+      },
+
+      //设定是否需要持续获取控制台
+      setKeepGettingConsole(setting) {
+        this.keepGettingConsole = !setting;
+
+        let polling = setInterval(() => {
+          this.getConsole();
+          if (!this.keepGettingConsole) {
+            clearInterval(polling);
+          }
+        }, 2000)
       },
 
       changeShowTips() {

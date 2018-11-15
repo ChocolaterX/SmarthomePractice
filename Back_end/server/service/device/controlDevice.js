@@ -219,3 +219,47 @@ exports.delete = async (ctx) => {
         });
     });
 };
+
+//得到控制台消息
+exports.console = async (ctx) => {
+    let response = {};
+    let userId = ctx.request.header.userid;
+    let deviceEntity = {
+        user: userId,
+        type: 0
+    };
+    let gateways = [];
+
+    return new Promise((resolve, reject) => {
+        asyncModule.waterfall([
+            callback => {
+                controlDeviceModel.find(deviceEntity)
+                    .exec((err, result) => {
+                        if (err) {
+                            console.log('异常错误：查询用户网关失败');
+                            reject(err);
+                        }
+                        else if (result) {
+                            gateways = result;
+                            callback();
+                        }
+                        else {
+                            response = {
+                                errorCode: 700,
+                                message: '未查询到当前用户的网关'
+                            };
+                            resolve(response);
+                        }
+                    });
+            },
+            callback => {
+                response=gatewayModule.getConsole(gateways, 'control');
+                // console.log('\n response');
+                // console.log(response);
+                callback();
+            }
+        ], () => {
+            resolve(response);
+        });
+    });
+};

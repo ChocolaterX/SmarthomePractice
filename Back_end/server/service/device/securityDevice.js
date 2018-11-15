@@ -2,7 +2,9 @@ const asyncModule = require('async');
 const validator = require('validator');
 // const deviceConfig = require('../../../config/device');
 // const userModel = require('../../model/user');
+const controlDeviceModel = require('../../model/controlDevice');
 const securityDeviceModel = require('../../model/securityDevice');
+const gatewayModule = require('../../../gateway/index');
 
 //添加设备
 //参数检查
@@ -206,16 +208,60 @@ exports.delete = async (ctx) => {
     });
 };
 
-//使用控制按钮进行设备控制
-exports.command = async (ctx) => {
-    return new Promise((resolve, reject) => {
-    });
-};
+// //使用控制按钮进行设备控制
+// exports.command = async (ctx) => {
+//     return new Promise((resolve, reject) => {
+//     });
+// };
+//
+// //使用指令进行设备控制
+// exports.instruction = async (ctx) => {
+//     let instruction = ctx.body.request;
+//     return new Promise((resolve, reject) => {
+//     });
+// };
 
-//使用指令进行设备控制
-exports.instruction = async (ctx) => {
-    let instruction = ctx.body.request;
+//得到控制台消息
+exports.console = async (ctx) => {
+    let response = {};
+    let userId = ctx.request.header.userid;
+    let deviceEntity = {
+        user: userId,
+        type: 0
+    };
+    let gateways = [];
+
     return new Promise((resolve, reject) => {
+        asyncModule.waterfall([
+            callback => {
+                controlDeviceModel.find(deviceEntity)
+                    .exec((err, result) => {
+                        if (err) {
+                            console.log('异常错误：查询用户网关失败');
+                            reject(err);
+                        }
+                        else if (result) {
+                            gateways = result;
+                            callback();
+                        }
+                        else {
+                            response = {
+                                errorCode: 700,
+                                message: '未查询到当前用户的网关'
+                            };
+                            resolve(response);
+                        }
+                    });
+            },
+            callback => {
+                response = gatewayModule.getConsole(gateways, 'security');
+                // console.log('\n response');
+                // console.log(response);
+                callback();
+            }
+        ], () => {
+            resolve(response);
+        });
     });
 };
 
@@ -251,7 +297,7 @@ exports.formatInstruction = async (instruction) => {
                     });
             },
             callback => {
-                if (instruction.substring(48, 50) === '0d') {
+                if (instruction.substring(48, 50) === '0D') {
                     if (instruction.substring(50, 52) === '01') {
                         message = '门磁打开';
                         state = '01';
@@ -269,7 +315,7 @@ exports.formatInstruction = async (instruction) => {
                         resolve(response);
                     }
                 }
-                else if (instruction.substring(48, 50) === '0e') {
+                else if (instruction.substring(48, 50) === '0E') {
                     if (instruction.substring(50, 52) === '01') {
                         message = '红外感应有人';
                         state = '01';
