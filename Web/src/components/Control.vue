@@ -319,7 +319,9 @@
             console.log(response);
             if (response.data.errorCode === 0) {
               //未考虑多个网关的情况
-              this.consoleInstructions = response.data.consoleResult[0].instructions;
+              if (response.data.consoleResult.length !== 0) {
+                this.consoleInstructions = response.data.consoleResult[0].instructions;
+              }
             }
             else {
               this.$message({

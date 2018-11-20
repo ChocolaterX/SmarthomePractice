@@ -255,8 +255,8 @@ exports.console = async (ctx) => {
             },
             callback => {
                 response = gatewayModule.getConsole(gateways, 'security');
-                // console.log('\n response');
-                // console.log(response);
+                console.log('\n response');
+                console.log(response.consoleResult);
                 callback();
             }
         ], () => {

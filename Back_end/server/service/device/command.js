@@ -64,7 +64,7 @@ exports.command = async (ctx) => {
             callback => {
                 let instructions = formatControlInstruction(gateways, device, command);
                 for (let i = 0; i < instructions.length; i++) {
-                    gatewayModule.writeCommand(instructions[i]);
+                    gatewayModule.writeInstruction(instructions[i]);
                 }
                 // console.log(instructions);
                 response = {
@@ -93,7 +93,7 @@ exports.instruction = async (ctx) => {
     console.log(instruction);
 
     return new Promise((resolve, reject) => {
-        gatewayModule.writeCommand(instruction);
+        gatewayModule.writeInstruction(instruction);
         response = {
             errorCode: 0,
             message: '控制指令发送成功'

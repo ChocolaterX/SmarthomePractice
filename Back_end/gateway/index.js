@@ -4,54 +4,44 @@ const validator = require('validator');
 const config = require('../config/config');
 const securityDeviceModule = require('../server/service/device/securityDevice');
 
+//**************
 //全局变量
 let Clients = [];           //已连接的客户端
-//[{gatewayMac,instructions[string,string]},{}]
+//以下三个Console变量的格式为[{gatewayMac,instructions[string,string]},{}]
 let ConsoleOfControl = [];      //分别存储每个网关的控制台消息
 let ConsoleOfSecurity = [];
 let ConsoleOfNetworking = [];
+
+//设备心跳包格式为[{gatewayMac, devices[string, string]},{}],其中string为单条指令+状态+商品号
+let devicesHeartbeat = [];
+//*************
 
 /**
  * 向网关发送写指令
  * @param instruction   String形式的指令
  * 控制命令的长度为25 byte
  */
-exports.writeCommand = instruction => {
-    console.log('write command');
+exports.writeInstruction = instruction => {
+    console.log('write instruction');
     console.log('instruction:' + instruction);
     // console.log('instruction length:' + instruction.length);
 
     //let buf = new Buffer(25);
     let length = Math.floor(instruction.length / 2);
-    //console.log(Math.floor(instruction.length/2));
     let buf = new Buffer(Math.floor(instruction.length / 2));
     //buf.write('FC0015000120202020200801100100124B000FF6AA36080018', 0, 25, 'hex');
     //buf.write('FC0015000120202020200801100100124B000FF6AA36080119', 0, 25, 'hex');
-    //FC 0015 0001 202020202008 01 1001 00124B000FF6AA36 0801 19
-    //FC 0015 0001 202020303008 01 1001 000D6F000BE63DC4 0101 5A'
-
 
     // DeprecationWarning: Buffer() is deprecated due to security and usability
     // issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(),
     // or Buffer.from() methods instead.
 
-
     buf.write(instruction, 0, length, 'hex');
-    //client.write(buf);
-    //console.log(Clients[0]);
-    //console.log('\n\n');
-    //console.log(Clients);
-    //console.log('\n\n');
-    //if (Clients[0]) {
-    //    Clients[0].write(buf);
-    //}
-    //else {
-    //    console.log('当前未连接网关');
-    //}
+
     for (let i = 0; i < Clients.length; i++) {
         Clients[i].write(buf);
     }
-    if (Clients.length == 0) {
+    if (Clients.length === 0) {
         console.log('当前未连接网关');
     }
 };
@@ -101,16 +91,46 @@ exports.getConsole = (gateways, type) => {
     return response;
 };
 
-function pushConsole(instruction) {
+/**
+ * 获取心跳包的设备
+ * @param gateways
+ */
+exports.getDevicesFromHeartbeat = (gateways) => {
+    let response;
+    let devices = [];
+    for (let i = 0; i < gateways.length; i++) {
+        for (let j = 0; j < devicesHeartbeat.length; j++) {
+            if (devicesHeartbeat[j].gatewayMac === gateways[i].mac) {
+                devices.push(...devicesHeartbeat[j].devices);
+                break;
+            }
+        }
+    }
+    response = {
+        errorCode: 0,
+        devices
+    };
+    return response;
+};
+
+/**
+ * 服务器获取网关的消息之后将该指令推送到相应的变量
+ * 包括：控制设备控制台，安防设备控制台，设备心跳包
+ * @param instruction   单条指令
+ */
+function recordInstruction(instruction) {
     let gatewayMac = instruction.substr(10, 12);
     let gatewayExists = false;
     let tempConsoleItem = {};       //如当前不存在，则用此变量保存一条console项
     let tempInstructions = [];
 
+    //网关连接
     if (instruction.substring(0, 6) === 'FC000C') {
 
     }
-    if (instruction.substring(0, 6) === 'FC0016' || instruction.substring(0, 6) === 'FC0015') {
+
+    //控制设备反馈
+    else if (instruction.substring(0, 6) === 'FC0016' || instruction.substring(0, 6) === 'FC0015') {
         for (let i = 0; i < ConsoleOfControl.length; i++) {
             if (ConsoleOfControl[i].gatewayMac === gatewayMac) {
                 gatewayExists = true;
@@ -129,7 +149,9 @@ function pushConsole(instruction) {
             ConsoleOfControl.push(tempConsoleItem);
         }
     }
-    if (instruction.substring(0, 6) === 'FC0018') {
+
+    //安防设备消息
+    else if (instruction.substring(0, 6) === 'FC0018') {
         for (let i = 0; i < ConsoleOfSecurity.length; i++) {
             if (ConsoleOfSecurity[i].gatewayMac === gatewayMac) {
                 gatewayExists = true;
@@ -149,6 +171,31 @@ function pushConsole(instruction) {
         }
     }
 
+    //心跳包，长度不定
+    else {
+        let index = 30;         //心跳包第一个设备的下标
+        let devices = [];       //String array eg:'005043c9a339556c 01010e00'
+        let tempDevicesHeartbeatItem;
+
+        while (index < instruction.length-24) {
+            devices.push(instruction.substr(index, 24));
+            index = index + 24;
+        }
+
+        for (let i = 0; i < devicesHeartbeat.length; i++) {
+            if (devicesHeartbeat[i].gatewayMac === gatewayMac) {
+                gatewayExists = true;
+                devicesHeartbeat[i].devices = devices;
+            }
+        }
+        if (!gatewayExists) {
+            tempDevicesHeartbeatItem = {
+                gatewayMac,
+                devices
+            };
+            devicesHeartbeat.push(tempDevicesHeartbeatItem);
+        }
+    }
 }
 
 
@@ -210,66 +257,80 @@ socketServer.on('connection', function (client) {
     client.on('data', function (data) {
         console.log('server got data from client: ', data.toString());
 
-        //解析多条指令并在一起的情况
-
-
-        //console.log(Clients);
+        let instructions = [];
         let instruction = data.toString();
         instruction = instruction.toUpperCase();
-        pushConsole(instruction);
-        // console.log('\nconsoleOfcontrol:');
-        // console.log(ConsoleOfControl);
-
-        /**
-         * 判断从网关传来的数据类型
-         * 长度0C：网关连接确认
-         * 长度18：门磁状态，红外感应状态
-         * 其他长度：心跳包
-         */
-
-        // fc000c00012020203030080301010127 网关连接
-        //fc000c00012020203030080301010127fc0030000120202030300803010203000d6f000be63dc401005100005043c9a339556c01010ecb005043c90324399601010dc11e
-        //心跳包
-
-        if (instruction.substring(0, 6) === 'FC000C') {
-            // console.log('网关连接:  ' + Date());
+        //解析多条指令并在一起的情况
+        if (instruction.lastIndexOf('FC') !== 0) {
+            let secondIndex = 1;
+            let substring = '';
+            while (instruction.lastIndexOf('FC') !== 0) {
+                secondIndex = instruction.indexOf('FC', 1);
+                substring = instruction.substring(0, secondIndex);
+                instructions.push(substring);
+                instruction = instruction.substring(secondIndex);
+            }
+            instructions.push(instruction);
         }
-        if (instruction.substring(0, 6) === 'FC0015') {
-
+        else {
+            instructions.push(instruction);
         }
-        if (instruction.substring(0, 6) === 'FC0016') {
 
-        }
-        if (instruction.substring(0, 6) === 'FC0018') {
-            if (instruction.substring(24, 26) === '30') {            //报警设备
-                if (instruction.substring(46, 50) === '010D') {           //门磁
-                    //fc0018 000130eb1f03d0dd03 3002 005043c903246e27 01 0402 0102 52  旧版
-                    //fc0018 000120202030300803 3002 005043c903243996 01 010d 0102 5c  门磁打开
-                    //fc0018 000120202030300803 3002 005043c903243996 01 010d 0002 5d  门磁关闭
-                    //fc0018 000120202030300803 3002 005043c9a339556c 01 010e 0101 77  红外
-                    //fc0018 000120202030300803 3002 005043c9a339556c 01 010e 0001 76
+        // console.log(instructions);
 
+        for (let i = 0; i < instructions.length; i++) {
+            recordInstruction(instructions[i]);
 
-                    console.log('门磁指令');
-                    securityDeviceModule.formatInstruction(instruction).then(response => {
-                        console.log(response.message);
-                    }, err => {
-                        console.log(err);
-                    });
-                }
-                else if (instruction.substring(46, 50) === '010E') {
-                    console.log('红外感应指令');
-                    securityDeviceModule.formatInstruction(instruction).then(response => {
-                        console.log(response.message);
-                    }, err => {
-                        console.log(err);
-                    });
-                }
-                else {
-                    console.log('fc0018 未知指令');
+            /**
+             * 判断从网关传来的数据类型
+             * 长度0C：网关连接确认
+             * 长度15：控制设备命令应答
+             * 长度16：控制设备状态变化上报
+             * 长度18：门磁状态，红外感应状态
+             * 其他长度：心跳包
+             */
+            if (instructions[i].substring(0, 6) === 'FC000C') {
+                // console.log('网关连接:  ' + Date());
+            }
+            if (instructions[i].substring(0, 6) === 'FC0015') {
+
+            }
+            if (instructions[i].substring(0, 6) === 'FC0016') {
+
+            }
+            if (instructions[i].substring(0, 6) === 'FC0018') {
+                if (instructions[i].substring(24, 26) === '30') {            //报警设备
+                    if (instructions[i].substring(46, 50) === '010D') {           //门磁
+                        //fc0018 000130eb1f03d0dd03 3002 005043c903246e27 01 0402 0102 52  旧版
+                        //fc0018 000120202030300803 3002 005043c903243996 01 010d 0102 5c  门磁打开
+                        //fc0018 000120202030300803 3002 005043c903243996 01 010d 0002 5d  门磁关闭
+                        //fc0018 000120202030300803 3002 005043c9a339556c 01 010e 0101 77  红外
+                        //fc0018 000120202030300803 3002 005043c9a339556c 01 010e 0001 76
+
+                        console.log('门磁指令');
+                        securityDeviceModule.formatInstruction(instructions[i]).then(response => {
+                            console.log(response.message);
+                        }, err => {
+                            console.log(err);
+                        });
+                    }
+                    else if (instruction.substring(46, 50) === '010E') {
+                        console.log('红外感应指令');
+                        securityDeviceModule.formatInstruction(instructions[i]).then(response => {
+                            console.log(response.message);
+                        }, err => {
+                            console.log(err);
+                        });
+                    }
+                    else {
+                        console.log('fc0018 未知指令');
+                    }
                 }
             }
+
         }
+
+
     });
 
     //add set client keep alive
@@ -278,7 +339,6 @@ socketServer.on('connection', function (client) {
     client.setTimeout(2 * 60 * 1000, function () {
         client.end("Connection: close\r\n\r\n");
         client.destroy();
-        //Clients = [];
     });
     client.on('timeout', function () {
         client.end();
